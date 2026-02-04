@@ -3,265 +3,611 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile TPM Team Home Page</title>
+    <title>Mobile TPM Team Hub</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header class="page-header">
-        <div class="header-actions">
-            <button class="btn-icon">📝 Edit</button>
-            <button class="btn-icon">💬 View inline comments</button>
-            <button class="btn-icon">⭐ Saved for later</button>
-            <button class="btn-icon">👁️ Watch</button>
-            <button class="btn-icon">🔗 Share</button>
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-rocket"></i> TPM Hub</h2>
         </div>
-        <h1>Mobile TPM Team Home Page</h1>
-        <p class="page-meta">Created by Unknown User (sblotner@uber.com), last updated by Benjamin Kwok on Oct 09, 2025 • 3 minute read</p>
-    </header>
+        <nav class="sidebar-nav">
+            <a href="#dashboard" class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="#mission" class="nav-item"><i class="fas fa-bullseye"></i> Mission</a>
+            <a href="#team" class="nav-item"><i class="fas fa-users"></i> Team</a>
+            <a href="#releases" class="nav-item"><i class="fas fa-calendar-alt"></i> Releases</a>
+            <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> Contact</a>
+            <a href="#docs" class="nav-item"><i class="fas fa-book"></i> Docs</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+        </div>
+    </aside>
 
-    <main class="container">
-        <!-- Team Mission -->
-        <section class="mission-section">
-            <h2>OUR TEAM MISSION:</h2>
-            <p class="mission-statement">
-                To ensure the seamless, timely, and high-quality release of all Uber mobile 
-                applications, enhancing developer user experience and driving business growth.
-            </p>
-        </section>
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <header class="page-header">
+            <div class="header-top">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search wiki..." id="searchInput">
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon" title="Comments"><i class="fas fa-comment"></i></button>
+                    <button class="btn-icon notification-btn" title="Notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <button class="btn-icon" title="Share"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Mobile TPM Team Hub</h1>
+                <p class="page-meta">
+                    <i class="fas fa-user"></i> Updated by Benjamin Kwok • 
+                    <i class="fas fa-clock"></i> Feb 4, 2026 • 
+                    <i class="fas fa-eye"></i> 234 views
+                </p>
+            </div>
+        </header>
 
-        <!-- Important Dates -->
-        <section class="important-dates">
-            <h2>Important Dates to watch out for:</h2>
-            
-            <h3>Mobile Releases (Android/iOS):</h3>
-            <ul class="dates-list">
-                <li>
-                    <strong>FINAL CUT DATE:</strong> For Mobile apps (Rider, Driver and Eater), code must be landed on master before 
-                    <span class="highlight">December 8, 2025, 3pm PST</span> to ship the last 2025 mobile release.
-                </li>
-                <li>
-                    <strong>LAST 2025 ROLLOUT:</strong> All production releases will be at 100% rollout by 
-                    <span class="highlight">December 18, 2025</span>.
-                </li>
-            </ul>
-            <p class="note">
-                <strong>2026 mobile releases will resume on January 5, 2026 (1%)</strong>, from the Dec 29, 2025 build cut. 
-                (see detailed <a href="#" class="link">schedule here</a>)
-            </p>
-        </section>
+        <main class="container">
+            <!-- Announcements Banner -->
+            <section class="announcements-banner">
+                <div class="announcement-card urgent">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="announcement-content">
+                        <strong>Final 2025 Release:</strong> Code freeze December 8, 2025 @ 3pm PST
+                    </div>
+                </div>
+            </section>
 
-        <!-- Who We Are -->
-        <section class="team-section">
-            <h2>Who we are:</h2>
-            <div class="team-grid">
-                <!-- Row 1 -->
-                <div class="team-member">
-                    <h3 class="member-name">Evgueni Netchaev</h3>
-                    <div class="member-details">
+            <!-- Dashboard Metrics -->
+            <section id="dashboard" class="metrics-dashboard">
+                <h2><i class="fas fa-chart-line"></i> Release Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-icon success">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>98.5%</h3>
+                            <p>Success Rate</p>
+                            <div class="metric-trend up">
+                                <i class="fas fa-arrow-up"></i> 2.3% vs last month
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon warning">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>2.4hrs</h3>
+                            <p>Avg Deploy Time</p>
+                            <div class="metric-trend down">
+                                <i class="fas fa-arrow-down"></i> 15min faster
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon info">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>24</h3>
+                            <p>Releases This Month</p>
+                            <div class="metric-trend neutral">
+                                <i class="fas fa-minus"></i> On target
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon primary">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>156</h3>
+                            <p>Active Developers</p>
+                            <div class="metric-trend up">
+                                <i class="fas fa-arrow-up"></i> 12 new this week
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="quick-links-section">
+                <h2><i class="fas fa-bolt"></i> Quick Links & Tools</h2>
+                <div class="quick-links-grid">
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-jira"></i>
+                        <span>Create Jira Ticket</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Release Calendar</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documentation</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics Dashboard</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Git Repository</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-cog"></i>
+                        <span>CI/CD Pipeline</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Team Mission -->
+            <section id="mission" class="mission-section">
+                <div class="mission-content">
+                    <div class="mission-text">
+                        <h2>OUR TEAM MISSION</h2>
+                        <p class="mission-statement">
+                            To ensure the seamless, timely, and high-quality release of all Uber mobile 
+                            applications, enhancing developer user experience and driving business growth.
+                        </p>
+                        <div class="mission-stats">
+                            <div class="stat-item">
+                                <strong>500+</strong>
+                                <span>Releases/Year</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>3</strong>
+                                <span>Mobile Apps</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>24/7</strong>
+                                <span>Support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Team collaboration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Milestones Timeline -->
+            <section id="releases" class="milestones-section">
+                <h2><i class="fas fa-flag-checkered"></i> Upcoming Milestones</h2>
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 1, 2025</div>
+                            <h4>Q4 Planning Complete</h4>
+                            <p>All Q4 release schedules finalized</p>
+                            <span class="status-badge success">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 8, 2025 - 3:00 PM PST</div>
+                            <h4>Final Code Cut 2025</h4>
+                            <p>Last commit deadline for Rider, Driver, and Eater apps</p>
+                            <span class="status-badge warning">In Progress</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 18, 2025</div>
+                            <h4>100% Rollout Complete</h4>
+                            <p>All production releases at full deployment</p>
+                            <span class="status-badge info">Upcoming</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Jan 5, 2026</div>
+                            <h4>2026 Releases Resume</h4>
+                            <p>First 2026 release at 1% rollout</p>
+                            <span class="status-badge info">Scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Who We Are -->
+            <section id="team" class="team-section">
+                <h2><i class="fas fa-users"></i> Meet the Team</h2>
+                <div class="team-intro">
+                    <p>Our global team of 8 professionals working across multiple time zones to ensure 24/7 coverage and seamless mobile releases.</p>
+                </div>
+                <div class="team-grid">
+                    <!-- Row 1 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces" alt="Evgueni Netchaev">
+                            <div class="member-badge manager">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Evgueni Netchaev</h3>
                             <p class="member-title">Manager II, Technical Program Manager</p>
-                            <p class="member-location">Seattle, Washington, USA</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">EN</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Seattle, Washington, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-member">
-                    <h3 class="member-name">Benjamin Kwok</h3>
-                    <div class="member-details">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=faces" alt="Benjamin Kwok">
+                            <div class="member-badge lead">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Benjamin Kwok</h3>
                             <p class="member-title">Sr Technical Program Manager</p>
-                            <p class="member-location">San Francisco, California, USA</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">BK</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Row 2 -->
-                <div class="team-member">
-                    <h3 class="member-name">Dan Chung</h3>
-                    <div class="member-details">
+                    <!-- Row 2 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=faces" alt="Dan Chung">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Dan Chung</h3>
                             <p class="member-title">Sr Technical Program Manager</p>
-                            <p class="member-location">San Francisco, California, USA</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">DC</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-member">
-                    <h3 class="member-name">Gurjyot Nirh</h3>
-                    <div class="member-details">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&h=300&fit=crop&crop=faces" alt="Gurjyot Nirh">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Gurjyot Nirh</h3>
                             <p class="member-title">Sr Technical Program Manager</p>
-                            <p class="member-location">Plattsburgh, New York, USA</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">GN</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Plattsburgh, New York, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Row 3 -->
-                <div class="team-member">
-                    <h3 class="member-name">Jareth Pham</h3>
-                    <div class="member-details">
+                    <!-- Row 3 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=faces" alt="Jareth Pham">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Jareth Pham</h3>
                             <p class="member-title">Sr Technical Program Management, Release</p>
-                            <p class="member-location">San Francisco, California, USA</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">JP</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-member">
-                    <h3 class="member-name">Anugna S Gowda</h3>
-                    <div class="member-details">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=faces" alt="Anugna S Gowda">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Anugna S Gowda</h3>
                             <p class="member-title">OS Operator III</p>
-                            <p class="member-location">Bangalore, India</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">AG</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Row 4 -->
-                <div class="team-member">
-                    <h3 class="member-name">Toniya Kuppuswamy</h3>
-                    <div class="member-details">
+                    <!-- Row 4 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=faces" alt="Toniya Kuppuswamy">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Toniya Kuppuswamy</h3>
                             <p class="member-title">Operator II</p>
-                            <p class="member-location">Bangalore, India</p>
-                            <p class="member-vertical">Support vertical: R/D</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">TK</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <p class="member-vertical"><i class="fas fa-tag"></i> Support vertical: R/D</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="team-member">
-                    <h3 class="member-name">Narmada V</h3>
-                    <div class="member-details">
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&h=300&fit=crop&crop=faces" alt="Narmada V">
+                        </div>
                         <div class="member-info">
+                            <h3 class="member-name">Narmada V</h3>
                             <p class="member-title">Operator II</p>
-                            <p class="member-location">Bangalore, India</p>
-                            <p class="member-vertical">Support vertical: E/P</p>
-                        </div>
-                        <div class="member-photo">
-                            <div class="photo-placeholder">NV</div>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <p class="member-vertical"><i class="fas fa-tag"></i> Support vertical: E/P</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Contact & Activity Section -->
-        <section class="contact-activity-section">
-            <div class="contact-column">
-                <h2>How to contact us:</h2>
-                
-                <div class="contact-group">
-                    <h3>Slack:</h3>
-                    <ul class="contact-list">
-                        <li>
-                            <strong>Mobile Release development team:</strong><br>
-                            <a href="#" class="link">uber.enterprise.slack.com/archives/CTN487P2M</a>
-                        </li>
-                        <li>
-                            <strong>Mobile Release Platform Channel:</strong><br>
-                            <a href="#" class="link">uber.enterprise.slack.com/archives/CUA4HPXEK</a>
-                        </li>
-                        <li>
-                            <strong>Mobile Release General Questions and Requests:</strong><br>
-                            <a href="#" class="link">uber.enterprise.slack.com/archives/CTWPMER6X</a>
-                        </li>
-                    </ul>
+            <!-- Documentation Hub -->
+            <section id="docs" class="docs-section">
+                <h2><i class="fas fa-book"></i> Documentation Hub</h2>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Release Playbook</h4>
+                        <p>Step-by-step guide for mobile releases</p>
+                        <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h4>Troubleshooting</h4>
+                        <p>Common issues and solutions</p>
+                        <a href="#" class="doc-link">View Docs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>API Documentation</h4>
+                        <p>Mobile platform APIs and SDKs</p>
+                        <a href="#" class="doc-link">View API <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Onboarding Guide</h4>
+                        <p>New team member resources</p>
+                        <a href="#" class="doc-link">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
+            </section>
 
-                <div class="contact-group">
-                    <h3>Email:</h3>
-                    <p>TPM/RM Team: <a href="mailto:mobile-tpm-team-group@uber.com" class="link">mobile-tpm-team-group@uber.com</a></p>
-                </div>
+            <!-- Contact & Activity Section -->
+            <section class="contact-activity-section">
+                <div class="contact-column" id="contact">
+                    <h2><i class="fas fa-phone"></i> How to Contact Us</h2>
+                    
+                    <!-- Tabbed Contact Interface -->
+                    <div class="contact-tabs">
+                        <button class="tab-btn active" data-tab="slack">
+                            <i class="fab fa-slack"></i> Slack
+                        </button>
+                        <button class="tab-btn" data-tab="emergency">
+                            <i class="fas fa-exclamation-triangle"></i> Emergency
+                        </button>
+                        <button class="tab-btn" data-tab="request">
+                            <i class="fas fa-ticket-alt"></i> Request
+                        </button>
+                    </div>
 
-                <div class="contact-group">
-                    <h3>On-Call (L5 level emergency):</h3>
-                    <p>If you need immediate help and need to reach out directly, use our Pager Duty on-call schedule:</p>
-                    <p><a href="#" class="link">uber.pagerduty.com/schedules/PHYYWTU</a></p>
-                </div>
-
-                <div class="contact-group">
-                    <h3>Our Intake Process (All other requests):</h3>
-                    <p>Please create a Jira ticket using this intake form:</p>
-                    <p><a href="#" class="link">t3.uberinternal.com/secure/CreateIssueDetails!init.jspa?pid=21100&issuetype=10002</a></p>
-                </div>
-            </div>
-
-            <div class="activity-column">
-                <h2>Activity</h2>
-                <div class="activity-feed">
-                    <div class="activity-item">
-                        <span class="activity-icon">📄</span>
-                        <div class="activity-details">
-                            <a href="#" class="activity-link">1/29/2026 Operational Metric Flywheel review</a>
-                            <p class="activity-meta">Jan 29, 2026 • updated by Eddy Chu • <a href="#">view change</a></p>
+                    <div class="tab-content active" id="slack-tab">
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fab fa-slack"></i>
+                                <h4>Slack Channels</h4>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>Development Team</strong>
+                                <a href="#" class="contact-link">#mobile-release-dev</a>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>Platform Channel</strong>
+                                <a href="#" class="contact-link">#mobile-release-platform</a>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>General Questions</strong>
+                                <a href="#" class="contact-link">#mobile-release-questions</a>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-envelope"></i>
+                                <h4>Email</h4>
+                            </div>
+                            <a href="mailto:mobile-tpm-team-group@uber.com" class="email-link">
+                                mobile-tpm-team-group@uber.com
+                            </a>
                         </div>
                     </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">🖼️</span>
-                        <div class="activity-details">
-                            <a href="#" class="activity-link">Screenshot 2026-01-29 at 11.19.56 AM.png</a>
-                            <p class="activity-meta">Jan 29, 2026 • attached by Eddy Chu</p>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">🖼️</span>
-                        <div class="activity-details">
-                            <a href="#" class="activity-link">Screenshot 2026-01-29 at 11.17.24 AM.png</a>
-                            <p class="activity-meta">Jan 29, 2026 • attached by Eddy Chu</p>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">📄</span>
-                        <div class="activity-details">
-                            <a href="#" class="activity-link">1/29/2026 Operational Metric Flywheel review</a>
-                            <p class="activity-meta">Jan 29, 2026 • updated by Boldtulga Ganbaatar • <a href="#">view change</a></p>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <span class="activity-icon">📄</span>
-                        <div class="activity-details">
-                            <a href="#" class="activity-link">1/29/2026 Operational Metric Flywheel review</a>
-                            <p class="activity-meta">Jan 29, 2026 • updated by Guomin Xiang • <a href="#">view change</a></p>
-                        </div>
-                    </div>
-                    <button class="show-more-btn">Show More</button>
-                </div>
-            </div>
-        </section>
 
-        <!-- Comments Section -->
-        <section class="comments-section">
-            <div class="comments-actions">
-                <button class="like-btn">👍 Like</button>
-                <span class="like-text">Be the first to like this</span>
-            </div>
-            <div class="comment-box">
-                <div class="comment-avatar">👤</div>
-                <textarea placeholder="Write a comment..." class="comment-input"></textarea>
-            </div>
-        </section>
-    </main>
+                    <div class="tab-content" id="emergency-tab">
+                        <div class="contact-card urgent-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4>L5 Emergency On-Call</h4>
+                            </div>
+                            <p>For immediate critical issues requiring direct escalation:</p>
+                            <a href="#" class="emergency-btn">
+                                <i class="fas fa-phone-volume"></i>
+                                Page On-Call Engineer
+                            </a>
+                            <a href="#" class="link-btn">View PagerDuty Schedule →</a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="request-tab">
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-ticket-alt"></i>
+                                <h4>Submit a Request</h4>
+                            </div>
+                            <p>For all other requests, please create a Jira ticket:</p>
+                            <a href="#" class="primary-btn">
+                                <i class="fas fa-plus-circle"></i>
+                                Create Jira Ticket
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-column">
+                    <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces" alt="Eddy Chu">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Eddy Chu</strong> updated a page
+                                </div>
+                                <a href="#" class="activity-link">Operational Metric Flywheel review</a>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 2 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces" alt="Eddy Chu">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Eddy Chu</strong> attached files
+                                </div>
+                                <div class="attachment-preview">
+                                    <i class="fas fa-image"></i> Screenshot.png
+                                </div>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 2 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces" alt="Boldtulga">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Boldtulga Ganbaatar</strong> updated a page
+                                </div>
+                                <a href="#" class="activity-link">Q1 Release Schedule</a>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 5 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=80&h=80&fit=crop&crop=faces" alt="Guomin">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Guomin Xiang</strong> commented
+                                </div>
+                                <p class="comment-preview">"Great progress on the iOS release!"</p>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 1 day ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <button class="show-more-btn">
+                            <i class="fas fa-chevron-down"></i> Load More
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comments & Engagement Section -->
+            <section class="comments-section">
+                <h3><i class="fas fa-comments"></i> Discussion</h3>
+                <div class="engagement-bar">
+                    <button class="engagement-btn like-btn">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="engagement-count">12</span>
+                        <span class="engagement-label">Likes</span>
+                    </button>
+                    <button class="engagement-btn">
+                        <i class="far fa-comment"></i>
+                        <span class="engagement-count">5</span>
+                        <span class="engagement-label">Comments</span>
+                    </button>
+                    <button class="engagement-btn">
+                        <i class="far fa-bookmark"></i>
+                        <span class="engagement-label">Save</span>
+                    </button>
+                </div>
+                <div class="comment-box">
+                    <div class="comment-avatar">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=80&h=80&fit=crop&crop=faces" alt="You">
+                    </div>
+                    <div class="comment-input-wrapper">
+                        <textarea placeholder="Add a comment..." class="comment-input" rows="3"></textarea>
+                        <div class="comment-actions">
+                            <button class="comment-btn">
+                                <i class="fas fa-paper-plane"></i> Post Comment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
