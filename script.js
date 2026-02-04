@@ -3,6 +3,211 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Mobile TPM Wiki loaded successfully!');
 
+    // ==================== Metric Card Modal ====================
+    
+    const metricCards = document.querySelectorAll('.metric-card.clickable');
+    const modal = document.getElementById('metricModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalBody = document.getElementById('modalBody');
+    const modalClose = document.getElementById('modalClose');
+
+    const metricData = {
+        'success-rate': {
+            title: 'Release Success Rate - 98.5%',
+            content: `
+                <div class="metric-detail">
+                    <h3>Overview</h3>
+                    <p>Our release success rate has improved by 2.3% compared to last month, reaching an all-time high of 98.5%.</p>
+                </div>
+                <div class="metric-chart-placeholder">
+                    <i class="fas fa-chart-line" style="font-size: 3em;"></i>
+                    <span style="margin-left: 15px;">Trend Chart Visualization</span>
+                </div>
+                <div class="metric-stats-grid">
+                    <div class="metric-stat-item">
+                        <strong>247</strong>
+                        <span>Successful Releases</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>4</strong>
+                        <span>Failed Releases</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>96.2%</strong>
+                        <span>Last Month</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>95.8%</strong>
+                        <span>6 Month Avg</span>
+                    </div>
+                </div>
+                <div class="metric-detail">
+                    <h3>Key Improvements</h3>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>Enhanced automated testing coverage (+15%)</li>
+                        <li>Improved rollback procedures</li>
+                        <li>Better pre-release validation</li>
+                        <li>Increased staging environment testing</li>
+                    </ul>
+                </div>
+            `
+        },
+        'deploy-time': {
+            title: 'Average Deploy Time - 2.4 hours',
+            content: `
+                <div class="metric-detail">
+                    <h3>Overview</h3>
+                    <p>Deploy time has decreased by 15 minutes this month through optimized CI/CD pipelines and parallel processing.</p>
+                </div>
+                <div class="metric-chart-placeholder">
+                    <i class="fas fa-clock" style="font-size: 3em;"></i>
+                    <span style="margin-left: 15px;">Timeline Breakdown</span>
+                </div>
+                <div class="metric-stats-grid">
+                    <div class="metric-stat-item">
+                        <strong>35min</strong>
+                        <span>Build Time</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>45min</strong>
+                        <span>Test Execution</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>60min</strong>
+                        <span>Deployment</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>24min</strong>
+                        <span>Post-Deploy Checks</span>
+                    </div>
+                </div>
+                <div class="metric-detail">
+                    <h3>Optimization Areas</h3>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>Parallelized test suites</li>
+                        <li>Cached build dependencies</li>
+                        <li>Optimized Docker images</li>
+                        <li>Incremental deployments</li>
+                    </ul>
+                </div>
+            `
+        },
+        'releases': {
+            title: 'Releases This Month - 24',
+            content: `
+                <div class="metric-detail">
+                    <h3>Overview</h3>
+                    <p>We're on track with 24 releases this month across all three mobile applications (Rider, Driver, Eater).</p>
+                </div>
+                <div class="metric-chart-placeholder">
+                    <i class="fas fa-mobile-alt" style="font-size: 3em;"></i>
+                    <span style="margin-left: 15px;">Release Distribution</span>
+                </div>
+                <div class="metric-stats-grid">
+                    <div class="metric-stat-item">
+                        <strong>9</strong>
+                        <span>Rider Releases</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>8</strong>
+                        <span>Driver Releases</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>7</strong>
+                        <span>Eater Releases</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>25</strong>
+                        <span>Target for Month</span>
+                    </div>
+                </div>
+                <div class="metric-detail">
+                    <h3>Platform Breakdown</h3>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>iOS: 13 releases (54%)</li>
+                        <li>Android: 11 releases (46%)</li>
+                        <li>Hotfixes: 3 releases</li>
+                        <li>Major versions: 2 releases</li>
+                    </ul>
+                </div>
+            `
+        },
+        'developers': {
+            title: 'Active Developers - 156',
+            content: `
+                <div class="metric-detail">
+                    <h3>Overview</h3>
+                    <p>Developer engagement increased by 12 new active contributors this week across mobile platforms.</p>
+                </div>
+                <div class="metric-chart-placeholder">
+                    <i class="fas fa-users" style="font-size: 3em;"></i>
+                    <span style="margin-left: 15px;">Developer Activity Heatmap</span>
+                </div>
+                <div class="metric-stats-grid">
+                    <div class="metric-stat-item">
+                        <strong>68</strong>
+                        <span>iOS Developers</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>62</strong>
+                        <span>Android Developers</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>26</strong>
+                        <span>Full-stack</span>
+                    </div>
+                    <div class="metric-stat-item">
+                        <strong>+12</strong>
+                        <span>New This Week</span>
+                    </div>
+                </div>
+                <div class="metric-detail">
+                    <h3>Engagement Metrics</h3>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li>Average 4.2 commits per developer/day</li>
+                        <li>1,847 pull requests merged this month</li>
+                        <li>92% code review participation</li>
+                        <li>3.4 hour average PR review time</li>
+                    </ul>
+                </div>
+            `
+        }
+    };
+
+    metricCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const metricType = this.getAttribute('data-metric');
+            const data = metricData[metricType];
+            
+            if (data) {
+                modalTitle.textContent = data.title;
+                modalBody.innerHTML = data.content;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close modal
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // ESC key to close modal
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
     // ==================== Countdown Timer ====================
     
     function updateCountdown() {

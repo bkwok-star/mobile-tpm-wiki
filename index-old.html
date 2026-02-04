@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile TPM Team Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
+</head>
+<body>
+    <!-- Navigation Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2><i class="fas fa-rocket"></i> TPM Hub</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#quick-links" class="nav-item active"><i class="fas fa-bolt"></i> Quick Links</a>
+            <a href="#countdown" class="nav-item"><i class="fas fa-clock"></i> Countdown</a>
+            <a href="#dashboard" class="nav-item"><i class="fas fa-chart-line"></i> Metrics</a>
+            <a href="#charts" class="nav-item"><i class="fas fa-chart-bar"></i> Analytics</a>
+            <a href="#mission" class="nav-item"><i class="fas fa-bullseye"></i> Mission</a>
+            <a href="#calendar" class="nav-item"><i class="fas fa-calendar-alt"></i> Calendar</a>
+            <a href="#team" class="nav-item"><i class="fas fa-users"></i> Team</a>
+            <a href="#apps" class="nav-item"><i class="fas fa-mobile-alt"></i> Apps</a>
+            <a href="#docs" class="nav-item"><i class="fas fa-book"></i> Docs</a>
+            <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> Contact</a>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> Dark Mode
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="main-wrapper">
+        <header class="page-header">
+            <div class="header-top">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search wiki..." id="searchInput">
+                </div>
+                <div class="header-actions">
+                    <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
+                    <button class="btn-icon" title="Comments"><i class="fas fa-comment"></i></button>
+                    <div class="notification-wrapper">
+                        <button class="btn-icon notification-btn" title="Notifications" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">7</span>
+                        </button>
+                        <!-- Notification Dropdown -->
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-dropdown-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-all-read" id="markAllRead">Mark all as read</button>
+                            </div>
+                            <div class="notification-filters">
+                                <button class="filter-btn active" data-filter="all">All (7)</button>
+                                <button class="filter-btn" data-filter="releases">Releases (3)</button>
+                                <button class="filter-btn" data-filter="mentions">Mentions (2)</button>
+                                <button class="filter-btn" data-filter="updates">Updates (2)</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <div class="notification-item unread" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Release 4.52.0 deployed successfully</div>
+                                        <div class="notif-meta">iOS Rider • 15 minutes ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="mentions">
+                                    <div class="notif-icon mentions">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title"><strong>Dan Chung</strong> mentioned you in a comment</div>
+                                        <div class="notif-meta">"Can you review the Android build?" • 1 hour ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Build failure: Driver Android</div>
+                                        <div class="notif-meta">Build #2847 • 2 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="updates">
+                                    <div class="notif-icon updates">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Release playbook updated</div>
+                                        <div class="notif-meta">Benjamin Kwok • 5 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="mentions">
+                                    <div class="notif-icon mentions">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title"><strong>Gurjyot Nirh</strong> replied to your comment</div>
+                                        <div class="notif-meta">"Looks good to me!" • 6 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Rollout completed: Eater iOS 100%</div>
+                                        <div class="notif-meta">Version 5.23.1 • Yesterday</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="updates">
+                                    <div class="notif-icon updates">
+                                        <i class="fas fa-calendar"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">New release scheduled for Jan 12, 2026</div>
+                                        <div class="notif-meta">Release Team • 2 days ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="notification-dropdown-footer">
+                                <a href="#" class="view-all-link">View all notifications →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-icon" title="Share"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+            <div class="header-title">
+                <h1>Mobile TPM Team Hub</h1>
+                <p class="page-meta">
+                    <i class="fas fa-user"></i> Updated by Benjamin Kwok • 
+                    <i class="fas fa-clock"></i> Feb 4, 2026 • 
+                    <i class="fas fa-eye"></i> 234 views
+                </p>
+            </div>
+        </header>
+
+        <main class="container">
+            <!-- Quick Links - Moved to Top -->
+            <section id="quick-links" class="quick-links-section">
+                <h2><i class="fas fa-bolt"></i> Quick Links & Tools</h2>
+                <div class="quick-links-grid">
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-jira"></i>
+                        <span>Create Jira Ticket</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Release Calendar</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Documentation</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics Dashboard</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Git Repository</span>
+                    </a>
+                    <a href="#" class="quick-link-card">
+                        <i class="fas fa-cog"></i>
+                        <span>CI/CD Pipeline</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Announcements Banner with Countdown -->
+            <section id="countdown" class="announcements-banner">
+                <div class="announcement-card urgent">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <div class="announcement-content">
+                        <strong>Final 2025 Release:</strong> Code freeze December 8, 2025 @ 3pm PST
+                    </div>
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="days">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="hours">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="minutes">00</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="seconds">00</span>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Two Column Layout Begins -->
+            <div class="two-column-layout">
+                <!-- LEFT COLUMN -->
+                <div class="column-left">
+                    <!-- Dashboard Metrics -->
+                    <section id="dashboard" class="metrics-dashboard">
+                        <h2><i class="fas fa-chart-line"></i> Release Metrics</h2>
+                        <div class="metrics-grid">
+                            <div class="metric-card" data-metric="success-rate">
+                                <div class="metric-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3>98.5%</h3>
+                                    <p>Success Rate</p>
+                                    <div class="metric-trend up">
+                                        <i class="fas fa-arrow-up"></i> 2.3% vs last month
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card" data-metric="deploy-time">
+                                <div class="metric-icon warning">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3>2.4hrs</h3>
+                                    <p>Avg Deploy Time</p>
+                                    <div class="metric-trend down">
+                                        <i class="fas fa-arrow-down"></i> 15min faster
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card" data-metric="releases">
+                                <div class="metric-icon info">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3>24</h3>
+                                    <p>Releases This Month</p>
+                                    <div class="metric-trend neutral">
+                                        <i class="fas fa-minus"></i> On target
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="metric-card" data-metric="developers">
+                                <div class="metric-icon primary">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="metric-content">
+                                    <h3>156</h3>
+                                    <p>Active Developers</p>
+                                    <div class="metric-trend up">
+                                        <i class="fas fa-arrow-up"></i> 12 new this week
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Interactive Charts Section -->
+                    <section id="charts" class="charts-section">
+                        <h2><i class="fas fa-chart-bar"></i> Analytics & Insights</h2>
+                        <div class="charts-grid-compact">
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h3>Success Rate</h3>
+                                    <span class="chart-period">6 Months</span>
+                                </div>
+                                <canvas id="successRateChart"></canvas>
+                            </div>
+                            
+                            <div class="chart-card">
+                                <div class="chart-header">
+                                    <h3>By Platform</h3>
+                                    <span class="chart-period">Q4</span>
+                                </div>
+                                <canvas id="platformChart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Team Mission -->
+                    <section id="mission" class="mission-section">
+                <div class="mission-content">
+                    <div class="mission-text">
+                        <h2>OUR TEAM MISSION</h2>
+                        <p class="mission-statement">
+                            To ensure the seamless, timely, and high-quality release of all Uber mobile 
+                            applications, enhancing developer user experience and driving business growth.
+                        </p>
+                        <div class="mission-stats">
+                            <div class="stat-item">
+                                <strong>500+</strong>
+                                <span>Releases/Year</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>3</strong>
+                                <span>Mobile Apps</span>
+                            </div>
+                            <div class="stat-item">
+                                <strong>24/7</strong>
+                                <span>Support</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mission-image">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=400&fit=crop" alt="Team collaboration">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Upcoming Milestones Timeline -->
+            <section id="releases" class="milestones-section">
+                <h2><i class="fas fa-flag-checkered"></i> Upcoming Milestones</h2>
+                <div class="timeline">
+                    <div class="timeline-item completed">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 1, 2025</div>
+                            <h4>Q4 Planning Complete</h4>
+                            <p>All Q4 release schedules finalized</p>
+                            <span class="status-badge success">Completed</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item active">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 8, 2025 - 3:00 PM PST</div>
+                            <h4>Final Code Cut 2025</h4>
+                            <p>Last commit deadline for Rider, Driver, and Eater apps</p>
+                            <span class="status-badge warning">In Progress</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Dec 18, 2025</div>
+                            <h4>100% Rollout Complete</h4>
+                            <p>All production releases at full deployment</p>
+                            <span class="status-badge info">Upcoming</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Jan 5, 2026</div>
+                            <h4>2026 Releases Resume</h4>
+                            <p>First 2026 release at 1% rollout</p>
+                            <span class="status-badge info">Scheduled</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Who We Are -->
+            <section id="team" class="team-section">
+                <h2><i class="fas fa-users"></i> Meet the Team</h2>
+                <div class="team-intro">
+                    <p>Our global team of 8 professionals working across multiple time zones to ensure 24/7 coverage and seamless mobile releases.</p>
+                </div>
+                <div class="team-grid">
+                    <!-- Row 1 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces" alt="Evgueni Netchaev">
+                            <div class="member-badge manager">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Evgueni Netchaev</h3>
+                            <p class="member-title">Manager II, Technical Program Manager</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Seattle, Washington, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=faces" alt="Benjamin Kwok">
+                            <div class="member-badge lead">
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Benjamin Kwok</h3>
+                            <p class="member-title">Sr Technical Program Manager</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=300&h=300&fit=crop&crop=faces" alt="Dan Chung">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Dan Chung</h3>
+                            <p class="member-title">Sr Technical Program Manager</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=300&h=300&fit=crop&crop=faces" alt="Gurjyot Nirh">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Gurjyot Nirh</h3>
+                            <p class="member-title">Sr Technical Program Manager</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Plattsburgh, New York, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=faces" alt="Jareth Pham">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Jareth Pham</h3>
+                            <p class="member-title">Sr Technical Program Management, Release</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> San Francisco, California, USA</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=faces" alt="Anugna S Gowda">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Anugna S Gowda</h3>
+                            <p class="member-title">OS Operator III</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=300&fit=crop&crop=faces" alt="Toniya Kuppuswamy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Toniya Kuppuswamy</h3>
+                            <p class="member-title">Operator II</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <p class="member-vertical"><i class="fas fa-tag"></i> Support vertical: R/D</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=300&h=300&fit=crop&crop=faces" alt="Narmada V">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Narmada V</h3>
+                            <p class="member-title">Operator II</p>
+                            <p class="member-location"><i class="fas fa-map-marker-alt"></i> Bangalore, India</p>
+                            <p class="member-vertical"><i class="fas fa-tag"></i> Support vertical: E/P</p>
+                            <div class="member-actions">
+                                <a href="#" class="action-btn"><i class="fab fa-slack"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-envelope"></i></a>
+                                <a href="#" class="action-btn"><i class="fas fa-calendar"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Release Calendar -->
+            <section class="calendar-section">
+                <h2><i class="fas fa-calendar-alt"></i> Release Calendar</h2>
+                <div class="calendar-controls">
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot rider"></span>
+                            <span>Rider</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot driver"></span>
+                            <span>Driver</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot eater"></span>
+                            <span>Eater</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="calendar" class="calendar-widget"></div>
+            </section>
+
+            <!-- Mobile App Preview -->
+            <section class="mobile-apps-section">
+                <h2><i class="fas fa-mobile-alt"></i> Our Mobile Apps</h2>
+                <p class="section-intro">The apps we support and release daily to millions of users worldwide</p>
+                
+                <div class="apps-carousel">
+                    <button class="carousel-btn prev" id="carouselPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="apps-container" id="appsContainer">
+                        <!-- Rider App -->
+                        <div class="app-preview active">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=300&h=600&fit=crop" alt="Rider App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon rider-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3>Uber Rider</h3>
+                                <p>Request rides, track drivers, and get to your destination</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.8</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>100M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v4.52.0</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Driver App -->
+                        <div class="app-preview">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726489?w=300&h=600&fit=crop" alt="Driver App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon driver-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <h3>Uber Driver</h3>
+                                <p>Earn money driving passengers or delivering food</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.7</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>50M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v4.48.2</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eater App -->
+                        <div class="app-preview">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=600&fit=crop" alt="Eater App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon eater-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3>Uber Eats</h3>
+                                <p>Discover restaurants and get food delivered</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.6</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>100M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v5.23.1</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-btn next" id="carouselNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot" data-index="1"></button>
+                    <button class="dot" data-index="2"></button>
+                </div>
+            </section>
+
+            <!-- Documentation Hub -->
+            <section id="docs" class="docs-section">
+                <h2><i class="fas fa-book"></i> Documentation Hub</h2>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h4>Release Playbook</h4>
+                        <p>Step-by-step guide for mobile releases</p>
+                        <a href="#" class="doc-link">View Guide <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-bug"></i>
+                        </div>
+                        <h4>Troubleshooting</h4>
+                        <p>Common issues and solutions</p>
+                        <a href="#" class="doc-link">View Docs <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4>API Documentation</h4>
+                        <p>Mobile platform APIs and SDKs</p>
+                        <a href="#" class="doc-link">View API <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4>Onboarding Guide</h4>
+                        <p>New team member resources</p>
+                        <a href="#" class="doc-link">Get Started <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact & Activity Section -->
+            <section class="contact-activity-section">
+                <div class="contact-column" id="contact">
+                    <h2><i class="fas fa-phone"></i> How to Contact Us</h2>
+                    
+                    <!-- Tabbed Contact Interface -->
+                    <div class="contact-tabs">
+                        <button class="tab-btn active" data-tab="slack">
+                            <i class="fab fa-slack"></i> Slack
+                        </button>
+                        <button class="tab-btn" data-tab="emergency">
+                            <i class="fas fa-exclamation-triangle"></i> Emergency
+                        </button>
+                        <button class="tab-btn" data-tab="request">
+                            <i class="fas fa-ticket-alt"></i> Request
+                        </button>
+                    </div>
+
+                    <div class="tab-content active" id="slack-tab">
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fab fa-slack"></i>
+                                <h4>Slack Channels</h4>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>Development Team</strong>
+                                <a href="#" class="contact-link">#mobile-release-dev</a>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>Platform Channel</strong>
+                                <a href="#" class="contact-link">#mobile-release-platform</a>
+                            </div>
+                            <div class="contact-link-item">
+                                <strong>General Questions</strong>
+                                <a href="#" class="contact-link">#mobile-release-questions</a>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-envelope"></i>
+                                <h4>Email</h4>
+                            </div>
+                            <a href="mailto:mobile-tpm-team-group@uber.com" class="email-link">
+                                mobile-tpm-team-group@uber.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="emergency-tab">
+                        <div class="contact-card urgent-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <h4>L5 Emergency On-Call</h4>
+                            </div>
+                            <p>For immediate critical issues requiring direct escalation:</p>
+                            <a href="#" class="emergency-btn">
+                                <i class="fas fa-phone-volume"></i>
+                                Page On-Call Engineer
+                            </a>
+                            <a href="#" class="link-btn">View PagerDuty Schedule →</a>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="request-tab">
+                        <div class="contact-card">
+                            <div class="contact-card-header">
+                                <i class="fas fa-ticket-alt"></i>
+                                <h4>Submit a Request</h4>
+                            </div>
+                            <p>For all other requests, please create a Jira ticket:</p>
+                            <a href="#" class="primary-btn">
+                                <i class="fas fa-plus-circle"></i>
+                                Create Jira Ticket
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="activity-column">
+                    <h2><i class="fas fa-history"></i> Recent Activity</h2>
+                    <div class="activity-feed">
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces" alt="Eddy Chu">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Eddy Chu</strong> updated a page
+                                </div>
+                                <a href="#" class="activity-link">Operational Metric Flywheel review</a>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 2 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=80&h=80&fit=crop&crop=faces" alt="Eddy Chu">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Eddy Chu</strong> attached files
+                                </div>
+                                <div class="attachment-preview">
+                                    <i class="fas fa-image"></i> Screenshot.png
+                                </div>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 2 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces" alt="Boldtulga">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Boldtulga Ganbaatar</strong> updated a page
+                                </div>
+                                <a href="#" class="activity-link">Q1 Release Schedule</a>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 5 hours ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <div class="activity-avatar">
+                                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=80&h=80&fit=crop&crop=faces" alt="Guomin">
+                            </div>
+                            <div class="activity-details">
+                                <div class="activity-header">
+                                    <strong>Guomin Xiang</strong> commented
+                                </div>
+                                <p class="comment-preview">"Great progress on the iOS release!"</p>
+                                <p class="activity-meta">
+                                    <i class="fas fa-clock"></i> 1 day ago
+                                </p>
+                            </div>
+                        </div>
+
+                        <button class="show-more-btn">
+                            <i class="fas fa-chevron-down"></i> Load More
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comments & Engagement Section -->
+            <section class="comments-section">
+                <h3><i class="fas fa-comments"></i> Discussion</h3>
+                <div class="engagement-bar">
+                    <button class="engagement-btn like-btn">
+                        <i class="far fa-thumbs-up"></i>
+                        <span class="engagement-count">12</span>
+                        <span class="engagement-label">Likes</span>
+                    </button>
+                    <button class="engagement-btn">
+                        <i class="far fa-comment"></i>
+                        <span class="engagement-count">5</span>
+                        <span class="engagement-label">Comments</span>
+                    </button>
+                    <button class="engagement-btn">
+                        <i class="far fa-bookmark"></i>
+                        <span class="engagement-label">Save</span>
+                    </button>
+                </div>
+                <div class="comment-box">
+                    <div class="comment-avatar">
+                        <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=80&h=80&fit=crop&crop=faces" alt="You">
+                    </div>
+                    <div class="comment-input-wrapper">
+                        <textarea placeholder="Add a comment..." class="comment-input" rows="3"></textarea>
+                        <div class="comment-actions">
+                            <button class="comment-btn">
+                                <i class="fas fa-paper-plane"></i> Post Comment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

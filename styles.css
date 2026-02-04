@@ -21,8 +21,8 @@
     --gray-700: #495057;
     --gray-800: #343a40;
     --gray-900: #212529;
-    --sidebar-width: 280px;
-    --header-height: 140px;
+    --sidebar-width: 220px;
+    --header-height: 80px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -2009,4 +2009,682 @@ body {
 
 .container > section {
     animation: fadeIn 0.6s ease;
+}
+
+/* ==================== COMPACT MODE STYLES FOR 13" SCREENS ==================== */
+
+/* Compact Sidebar */
+.sidebar.compact {
+    width: var(--sidebar-width);
+}
+
+.sidebar.compact .sidebar-header {
+    padding: 20px 15px;
+}
+
+.sidebar.compact .sidebar-header h2 {
+    font-size: 1.2em;
+}
+
+.sidebar.compact .nav-item {
+    padding: 10px 15px;
+    font-size: 0.9em;
+}
+
+/* Compact Header */
+.page-header.compact {
+    padding: 15px 25px;
+}
+
+.search-bar {
+    padding: 8px 15px;
+    font-size: 0.9em;
+}
+
+.btn-icon {
+    width: 36px;
+    height: 36px;
+}
+
+/* Compact Container */
+.container.compact {
+    padding: 20px 25px;
+}
+
+/* Two Column Layout */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.column-left,
+.column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Compact Section Headers */
+.compact h2 {
+    font-size: 1.3em;
+    margin-bottom: 12px;
+}
+
+.compact h3 {
+    font-size: 1.1em;
+}
+
+.compact h4 {
+    font-size: 1em;
+}
+
+.compact p {
+    font-size: 0.9em;
+}
+
+/* Compact Quick Links */
+.quick-links-section.compact {
+    margin-bottom: 20px;
+}
+
+.quick-links-grid.compact {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+}
+
+.quick-link-card.compact {
+    padding: 15px 10px;
+    font-size: 0.85em;
+}
+
+.quick-link-card.compact i {
+    font-size: 1.8em;
+}
+
+/* Compact Announcement Banner */
+.announcements-banner.compact {
+    margin-bottom: 20px;
+}
+
+.announcement-card.compact {
+    padding: 15px 20px;
+    font-size: 0.9em;
+}
+
+.countdown-timer.compact {
+    padding: 10px 15px;
+}
+
+.countdown-value {
+    font-size: 1.5em;
+}
+
+.countdown-label {
+    font-size: 0.65em;
+}
+
+/* Compact Metrics */
+.metrics-dashboard.compact {
+    margin-bottom: 0;
+}
+
+.metrics-grid.compact {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.metric-card.compact {
+    padding: 15px;
+}
+
+.metric-card.clickable {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.metric-card.clickable:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 184, 169, 0.2);
+}
+
+.metric-icon {
+    width: 45px;
+    height: 45px;
+    font-size: 1.4em;
+}
+
+.metric-content h3 {
+    font-size: 1.6em;
+}
+
+.metric-content p {
+    font-size: 0.85em;
+}
+
+.metric-trend {
+    font-size: 0.75em;
+}
+
+/* Compact Charts */
+.charts-section.compact {
+    margin-bottom: 0;
+}
+
+.charts-grid.compact {
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.chart-card.compact {
+    padding: 15px;
+}
+
+.chart-header h3 {
+    font-size: 1em;
+}
+
+.chart-period {
+    font-size: 0.75em;
+}
+
+/* Compact Mission */
+.mission-section.compact {
+    padding: 25px;
+    margin-bottom: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.mission-section.compact h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.mission-section.compact p {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 15px;
+}
+
+.mission-stats {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item strong {
+    font-size: 1.8em;
+}
+
+.stat-item span {
+    font-size: 0.8em;
+}
+
+/* Compact Team Grid */
+.team-section.compact {
+    margin-bottom: 0;
+}
+
+.team-grid.compact {
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.team-member.compact {
+    padding: 15px;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+}
+
+.team-member.compact img {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+}
+
+.team-member.compact .member-info h4 {
+    font-size: 0.95em;
+    margin-bottom: 3px;
+}
+
+.team-member.compact .member-info p {
+    font-size: 0.8em;
+    margin-bottom: 2px;
+}
+
+.team-member.compact .member-info span {
+    font-size: 0.75em;
+}
+
+/* Compact Docs */
+.docs-section.compact {
+    margin-bottom: 0;
+}
+
+.docs-grid.compact {
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.doc-card.compact {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+    transition: var(--transition);
+}
+
+.doc-card.compact:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 184, 169, 0.15);
+}
+
+.doc-card.compact i {
+    font-size: 1.5em;
+    color: var(--secondary);
+}
+
+.doc-card.compact h4 {
+    font-size: 0.9em;
+    margin-bottom: 2px;
+}
+
+.doc-card.compact p {
+    font-size: 0.75em;
+    color: var(--gray-600);
+}
+
+/* Compact Calendar Section */
+.calendar-section.compact {
+    margin-bottom: 0;
+}
+
+/* Compact Milestones Timeline */
+.milestones-compact {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.milestone-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-left: 2px solid var(--gray-300);
+    position: relative;
+    margin-left: 8px;
+}
+
+.milestone-marker {
+    position: absolute;
+    left: -9px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--gray-400);
+    border: 3px solid var(--white);
+}
+
+.milestone-item.completed .milestone-marker {
+    background: var(--success);
+}
+
+.milestone-item.active .milestone-marker {
+    background: var(--warning);
+    animation: pulse 2s infinite;
+}
+
+.milestone-content {
+    flex: 1;
+    font-size: 0.85em;
+    padding-left: 5px;
+}
+
+.milestone-content strong {
+    color: var(--dark);
+    margin-right: 5px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-left: 8px;
+}
+
+.badge.success {
+    background: rgba(107, 203, 119, 0.2);
+    color: var(--success);
+}
+
+.badge.warning {
+    background: rgba(255, 217, 61, 0.2);
+    color: #d4a017;
+}
+
+.badge.info {
+    background: rgba(77, 150, 255, 0.2);
+    color: var(--info);
+}
+
+.mini-progress {
+    height: 4px;
+    background: var(--gray-200);
+    border-radius: 2px;
+    margin-top: 5px;
+}
+
+.mini-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--warning) 0%, var(--secondary) 100%);
+    border-radius: 2px;
+    transition: width 0.5s ease;
+}
+
+.calendar-legend {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-item .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+}
+
+.calendar-widget.compact {
+    padding: 15px;
+    font-size: 0.85em;
+}
+
+/* Compact Mobile Apps */
+.mobile-apps-section.compact {
+    margin-bottom: 0;
+}
+
+.apps-carousel.compact {
+    height: 280px;
+    position: relative;
+}
+
+.app-preview.compact {
+    padding: 20px;
+    gap: 20px;
+    min-height: 280px;
+}
+
+.device-frame.compact {
+    width: 140px;
+    height: 280px;
+    border-radius: 25px;
+    padding: 6px;
+}
+
+.device-frame.compact img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.app-info.compact h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+.app-info.compact p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.app-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5em;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.app-stats.compact {
+    display: flex;
+    gap: 15px;
+    font-size: 0.85em;
+}
+
+.carousel-btn.compact {
+    width: 36px;
+    height: 36px;
+    font-size: 1em;
+}
+
+.carousel-btn.prev {
+    left: 10px;
+}
+
+.carousel-btn.next {
+    right: 10px;
+}
+
+/* Compact Contact */
+.contact-section.compact {
+    margin-bottom: 0;
+}
+
+.contact-compact {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.contact-item i {
+    font-size: 1.5em;
+    color: var(--secondary);
+    width: 30px;
+    text-align: center;
+}
+
+.contact-item div {
+    flex: 1;
+}
+
+.contact-item strong {
+    display: block;
+    font-size: 0.85em;
+    margin-bottom: 3px;
+}
+
+.contact-item a {
+    font-size: 0.85em;
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--white);
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow: hidden;
+    animation: modalSlideIn 0.3s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 25px;
+    border-bottom: 1px solid var(--gray-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 1.5em;
+    color: var(--dark);
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: var(--transition);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: var(--gray-100);
+    color: var(--gray-900);
+}
+
+.modal-body {
+    padding: 25px;
+    max-height: calc(80vh - 100px);
+    overflow-y: auto;
+}
+
+.metric-detail {
+    margin-bottom: 20px;
+}
+
+.metric-detail h3 {
+    color: var(--dark);
+    margin-bottom: 10px;
+}
+
+.metric-chart-placeholder {
+    background: var(--gray-100);
+    height: 200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-500);
+    margin: 15px 0;
+}
+
+.metric-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+}
+
+.metric-stat-item {
+    padding: 15px;
+    background: var(--gray-100);
+    border-radius: 8px;
+}
+
+.metric-stat-item strong {
+    display: block;
+    font-size: 1.8em;
+    color: var(--dark);
+    margin-bottom: 5px;
+}
+
+.metric-stat-item span {
+    color: var(--gray-600);
+    font-size: 0.9em;
+}
+
+/* Responsive Compact Mode */
+@media (max-width: 1400px) {
+    .two-column-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sidebar.compact {
+        transform: translateX(-100%);
+    }
+    
+    .main-wrapper {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .quick-links-grid.compact {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .metrics-grid.compact {
+        grid-template-columns: 1fr;
+    }
+    
+    .app-preview.compact {
+        flex-direction: column;
+        text-align: center;
+    }
 }
