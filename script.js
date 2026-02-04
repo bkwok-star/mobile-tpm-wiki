@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitle = document.getElementById('modalTitle');
     const modalBody = document.getElementById('modalBody');
     const modalClose = document.getElementById('modalClose');
+    
+    console.log('Found metric cards:', metricCards.length);
+    console.log('Modal element:', modal);
+    console.log('Modal title:', modalTitle);
+    console.log('Modal body:', modalBody);
+    console.log('Modal close:', modalClose);
 
     const metricData = {
         'success-rate': {
@@ -175,9 +181,17 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     metricCards.forEach(card => {
-        card.addEventListener('click', function() {
+        // Add cursor pointer style
+        card.style.cursor = 'pointer';
+        
+        // Add click event
+        card.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
             const metricType = this.getAttribute('data-metric');
             const data = metricData[metricType];
+            
+            console.log('Metric card clicked:', metricType);
             
             if (data) {
                 modalTitle.textContent = data.title;
@@ -186,32 +200,43 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.style.overflow = 'hidden';
             }
         });
+        
+        // Add tooltip on hover as alternative
+        card.setAttribute('title', 'Click to view detailed metrics');
     });
 
     // Close modal
-    modalClose.addEventListener('click', closeModal);
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal) {
-            closeModal();
-        }
-    });
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    }
 
     // ESC key to close modal
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
             closeModal();
         }
     });
 
     function closeModal() {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            console.log('Modal closed');
+        }
     }
 
     // ==================== Countdown Timer ====================
     
     function updateCountdown() {
-        const targetDate = new Date('2025-12-08T15:00:00-08:00'); // Dec 8, 2025, 3pm PST
+        const targetDate = new Date('2026-12-08T15:00:00-08:00'); // Dec 8, 2026, 3pm PST
         const now = new Date();
         const diff = targetDate - now;
 
@@ -515,35 +540,46 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.dot');
     const prevBtn = document.getElementById('carouselPrev');
     const nextBtn = document.getElementById('carouselNext');
+    const container = document.getElementById('appsContainer');
 
     function showSlide(index) {
-        slides.forEach(slide => {
-            slide.classList.remove('active');
-        });
-        dots.forEach(dot => {
-            dot.classList.remove('active');
-        });
-
-        currentSlide = (index + slides.length) % slides.length;
+        if (!container || slides.length === 0) return;
         
-        const container = document.getElementById('appsContainer');
+        // Remove active class from all
+        slides.forEach(slide => slide.classList.remove('active'));
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        // Calculate new index with wrapping
+        currentSlide = ((index % slides.length) + slides.length) % slides.length;
+        
+        // Update transform
         container.style.transform = `translateX(-${currentSlide * 100}%)`;
         
-        slides[currentSlide].classList.add('active');
-        dots[currentSlide].classList.add('active');
+        // Add active class
+        if (slides[currentSlide]) slides[currentSlide].classList.add('active');
+        if (dots[currentSlide]) dots[currentSlide].classList.add('active');
+        
+        console.log('Showing slide:', currentSlide);
     }
 
-    prevBtn.addEventListener('click', () => {
-        showSlide(currentSlide - 1);
-    });
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Previous button clicked');
+            showSlide(currentSlide - 1);
+        });
 
-    nextBtn.addEventListener('click', () => {
-        showSlide(currentSlide + 1);
-    });
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log('Next button clicked');
+            showSlide(currentSlide + 1);
+        });
+    }
 
     dots.forEach(dot => {
         dot.addEventListener('click', function() {
             const index = parseInt(this.getAttribute('data-index'));
+            console.log('Dot clicked:', index);
             showSlide(index);
         });
     });
@@ -551,19 +587,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-advance carousel
     let carouselInterval = setInterval(() => {
         showSlide(currentSlide + 1);
-    }, 5000);
+    }, 7000);
 
     // Pause auto-advance on hover
     const appsCarousel = document.querySelector('.apps-carousel');
-    appsCarousel.addEventListener('mouseenter', () => {
-        clearInterval(carouselInterval);
-    });
+    if (appsCarousel) {
+        appsCarousel.addEventListener('mouseenter', () => {
+            clearInterval(carouselInterval);
+        });
 
-    appsCarousel.addEventListener('mouseleave', () => {
-        carouselInterval = setInterval(() => {
-            showSlide(currentSlide + 1);
-        }, 5000);
-    });
+        appsCarousel.addEventListener('mouseleave', () => {
+            carouselInterval = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, 7000);
+        });
+    }
 
     // ==================== Navigation & Scrolling ====================
     

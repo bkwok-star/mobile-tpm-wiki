@@ -36,9 +36,13 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: var(--gray-900);
-    background: linear-gradient(135deg, #f5f7fa 0%, #e9ecf8 50%, #f0f4f8 100%);
+    background: linear-gradient(135deg, #e3e8f7 0%, #d4dbf0 50%, #dde3f5 100%);
     display: flex;
     min-height: 100vh;
+}
+
+.main-wrapper {
+    background: transparent;
 }
 
 /* Sidebar Navigation */
@@ -154,10 +158,15 @@ body {
 }
 
 .page-title h1 {
-    font-size: 1.5em;
+    font-size: 2.5em;
     color: var(--dark);
-    font-weight: 700;
+    font-weight: 800;
     margin: 0;
+    background: linear-gradient(135deg, var(--secondary) 0%, #667eea 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.5px;
 }
 
 .search-bar {
@@ -1563,6 +1572,13 @@ body {
     font-weight: 600;
 }
 
+.chart-placeholder {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Calendar Section */
 .calendar-section {
     margin-bottom: 50px;
@@ -2237,13 +2253,37 @@ body {
 }
 
 .metric-card.clickable {
-    cursor: pointer;
+    cursor: pointer !important;
     transition: var(--transition);
+    position: relative;
+}
+
+.metric-card.clickable::after {
+    content: '👆 Click for details';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--secondary);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.7em;
+    font-weight: 600;
+    opacity: 0;
+    transition: var(--transition);
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.metric-card.clickable:hover::after {
+    opacity: 1;
+    top: -12px;
 }
 
 .metric-card.clickable:hover {
     transform: translateY(-3px) scale(1.02);
     box-shadow: 0 8px 20px rgba(0, 184, 169, 0.2);
+    border: 2px solid var(--secondary);
 }
 
 .metric-icon {
@@ -2568,9 +2608,12 @@ body {
 }
 
 .carousel-btn.compact {
-    width: 36px;
-    height: 36px;
-    font-size: 1em;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+    z-index: 10;
+    background: var(--white) !important;
+    border: 2px solid var(--secondary);
 }
 
 .carousel-btn.prev {
@@ -2579,6 +2622,10 @@ body {
 
 .carousel-btn.next {
     right: 10px;
+}
+
+.carousel-btn:active {
+    transform: translateY(-50%) scale(0.95) !important;
 }
 
 /* Compact Contact */
