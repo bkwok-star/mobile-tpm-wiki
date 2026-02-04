@@ -3,6 +3,348 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Mobile TPM Wiki loaded successfully!');
 
+    // ==================== Countdown Timer ====================
+    
+    function updateCountdown() {
+        const targetDate = new Date('2025-12-08T15:00:00-08:00'); // Dec 8, 2025, 3pm PST
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff > 0) {
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+
+            // Add urgent class if less than 24 hours
+            const timer = document.getElementById('countdownTimer');
+            if (days === 0 && hours < 24) {
+                timer.classList.add('urgent');
+            }
+        } else {
+            document.getElementById('countdownTimer').innerHTML = '<div class="countdown-complete">🎉 Code freeze reached!</div>';
+        }
+    }
+
+    // Update countdown every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ==================== Notification Dropdown ====================
+    
+    const notificationBtn = document.getElementById('notificationBtn');
+    const notificationDropdown = document.getElementById('notificationDropdown');
+    const notificationCount = document.getElementById('notificationCount');
+    const markAllRead = document.getElementById('markAllRead');
+
+    notificationBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        notificationDropdown.classList.toggle('active');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!notificationDropdown.contains(e.target) && !notificationBtn.contains(e.target)) {
+            notificationDropdown.classList.remove('active');
+        }
+    });
+
+    // Filter notifications
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const notificationItems = document.querySelectorAll('.notification-item');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+            
+            filterButtons.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            notificationItems.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Mark all as read
+    markAllRead.addEventListener('click', function() {
+        notificationItems.forEach(item => {
+            item.classList.remove('unread');
+        });
+        notificationCount.textContent = '0';
+        notificationCount.style.display = 'none';
+        showNotification('All notifications marked as read');
+    });
+
+    // Close individual notifications
+    document.querySelectorAll('.notif-close').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const item = this.closest('.notification-item');
+            item.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => {
+                item.remove();
+                updateNotificationCount();
+            }, 300);
+        });
+    });
+
+    function updateNotificationCount() {
+        const unreadCount = document.querySelectorAll('.notification-item.unread').length;
+        notificationCount.textContent = unreadCount;
+        if (unreadCount === 0) {
+            notificationCount.style.display = 'none';
+        }
+    }
+
+    // ==================== Interactive Charts ====================
+    
+    // Success Rate Chart (Line)
+    const successRateCtx = document.getElementById('successRateChart');
+    if (successRateCtx) {
+        new Chart(successRateCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Success Rate',
+                    data: [95.2, 96.8, 97.5, 98.1, 98.5, 98.5],
+                    borderColor: '#00B8A9',
+                    backgroundColor: 'rgba(0, 184, 169, 0.1)',
+                    tension: 0.4,
+                    fill: true,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false,
+                        min: 94,
+                        max: 100,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    // Platform Distribution Chart (Doughnut)
+    const platformCtx = document.getElementById('platformChart');
+    if (platformCtx) {
+        new Chart(platformCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['iOS Rider', 'Android Rider', 'iOS Driver', 'Android Driver', 'iOS Eater', 'Android Eater'],
+                datasets: [{
+                    data: [22, 20, 18, 17, 13, 10],
+                    backgroundColor: [
+                        '#00B8A9',
+                        '#00897B',
+                        '#4D96FF',
+                        '#2196F3',
+                        '#FF6B6B',
+                        '#ff8787'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    }
+
+    // Release Volume Chart (Bar)
+    const releaseVolumeCtx = document.getElementById('releaseVolumeChart');
+    if (releaseVolumeCtx) {
+        new Chart(releaseVolumeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [
+                    {
+                        label: 'Rider',
+                        data: [8, 9, 10, 11, 9, 10, 11, 10, 9, 8, 7, 6],
+                        backgroundColor: '#00B8A9'
+                    },
+                    {
+                        label: 'Driver',
+                        data: [7, 8, 9, 8, 8, 9, 8, 9, 8, 7, 6, 5],
+                        backgroundColor: '#4D96FF'
+                    },
+                    {
+                        label: 'Eater',
+                        data: [6, 7, 8, 7, 7, 8, 9, 8, 7, 9, 8, 7],
+                        backgroundColor: '#FF6B6B'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true
+                    },
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+
+    // ==================== Interactive Calendar ====================
+    
+    const calendarEl = document.getElementById('calendar');
+    if (calendarEl) {
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth',
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek'
+            },
+            events: [
+                {
+                    title: 'Rider iOS 4.52.0',
+                    start: '2025-12-08',
+                    color: '#00B8A9'
+                },
+                {
+                    title: 'Driver Android 4.48.2',
+                    start: '2025-12-10',
+                    color: '#4D96FF'
+                },
+                {
+                    title: 'Eater iOS 5.23.1',
+                    start: '2025-12-12',
+                    color: '#FF6B6B'
+                },
+                {
+                    title: 'Rider Android 4.51.5',
+                    start: '2025-12-15',
+                    color: '#00897B'
+                },
+                {
+                    title: 'Final 2025 Rollout',
+                    start: '2025-12-18',
+                    end: '2025-12-19',
+                    color: '#FFD93D'
+                },
+                {
+                    title: '2026 Releases Resume',
+                    start: '2026-01-05',
+                    color: '#6BCB77'
+                },
+                {
+                    title: 'Rider iOS 5.0.0',
+                    start: '2026-01-12',
+                    color: '#00B8A9'
+                },
+                {
+                    title: 'Driver iOS 5.0.0',
+                    start: '2026-01-15',
+                    color: '#4D96FF'
+                }
+            ],
+            eventClick: function(info) {
+                showNotification(`📅 ${info.event.title} - ${info.event.start.toLocaleDateString()}`);
+            }
+        });
+        calendar.render();
+    }
+
+    // ==================== Mobile App Carousel ====================
+    
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.app-preview');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.getElementById('carouselPrev');
+    const nextBtn = document.getElementById('carouselNext');
+
+    function showSlide(index) {
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+
+        currentSlide = (index + slides.length) % slides.length;
+        
+        const container = document.getElementById('appsContainer');
+        container.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+    }
+
+    prevBtn.addEventListener('click', () => {
+        showSlide(currentSlide - 1);
+    });
+
+    nextBtn.addEventListener('click', () => {
+        showSlide(currentSlide + 1);
+    });
+
+    dots.forEach(dot => {
+        dot.addEventListener('click', function() {
+            const index = parseInt(this.getAttribute('data-index'));
+            showSlide(index);
+        });
+    });
+
+    // Auto-advance carousel
+    let carouselInterval = setInterval(() => {
+        showSlide(currentSlide + 1);
+    }, 5000);
+
+    // Pause auto-advance on hover
+    const appsCarousel = document.querySelector('.apps-carousel');
+    appsCarousel.addEventListener('mouseenter', () => {
+        clearInterval(carouselInterval);
+    });
+
+    appsCarousel.addEventListener('mouseleave', () => {
+        carouselInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000);
+    });
+
     // ==================== Navigation & Scrolling ====================
     
     // Smooth scrolling for navigation links
@@ -349,21 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ==================== Notification Badge ====================
-    
-    const notificationBtn = document.querySelector('.notification-btn');
-    if (notificationBtn) {
-        notificationBtn.addEventListener('click', function() {
-            const badge = this.querySelector('.notification-badge');
-            if (badge) {
-                badge.style.animation = 'pulse 0.5s';
-                setTimeout(() => {
-                    badge.style.animation = '';
-                }, 500);
-            }
-            showNotification('3 new notifications');
-        });
-    }
+    // Notification badge animation handled by dropdown section above
 
     // ==================== Scroll-based Nav Highlighting ====================
     

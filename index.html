@@ -6,6 +6,9 @@
     <title>Mobile TPM Team Hub</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js"></script>
 </head>
 <body>
     <!-- Navigation Sidebar -->
@@ -39,10 +42,100 @@
                 <div class="header-actions">
                     <button class="btn-icon" title="Edit"><i class="fas fa-edit"></i></button>
                     <button class="btn-icon" title="Comments"><i class="fas fa-comment"></i></button>
-                    <button class="btn-icon notification-btn" title="Notifications">
-                        <i class="fas fa-bell"></i>
-                        <span class="notification-badge">3</span>
-                    </button>
+                    <div class="notification-wrapper">
+                        <button class="btn-icon notification-btn" title="Notifications" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">7</span>
+                        </button>
+                        <!-- Notification Dropdown -->
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-dropdown-header">
+                                <h4>Notifications</h4>
+                                <button class="mark-all-read" id="markAllRead">Mark all as read</button>
+                            </div>
+                            <div class="notification-filters">
+                                <button class="filter-btn active" data-filter="all">All (7)</button>
+                                <button class="filter-btn" data-filter="releases">Releases (3)</button>
+                                <button class="filter-btn" data-filter="mentions">Mentions (2)</button>
+                                <button class="filter-btn" data-filter="updates">Updates (2)</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <div class="notification-item unread" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-rocket"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Release 4.52.0 deployed successfully</div>
+                                        <div class="notif-meta">iOS Rider • 15 minutes ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="mentions">
+                                    <div class="notif-icon mentions">
+                                        <i class="fas fa-at"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title"><strong>Dan Chung</strong> mentioned you in a comment</div>
+                                        <div class="notif-meta">"Can you review the Android build?" • 1 hour ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-exclamation-triangle"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Build failure: Driver Android</div>
+                                        <div class="notif-meta">Build #2847 • 2 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="updates">
+                                    <div class="notif-icon updates">
+                                        <i class="fas fa-file-alt"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Release playbook updated</div>
+                                        <div class="notif-meta">Benjamin Kwok • 5 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item unread" data-category="mentions">
+                                    <div class="notif-icon mentions">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title"><strong>Gurjyot Nirh</strong> replied to your comment</div>
+                                        <div class="notif-meta">"Looks good to me!" • 6 hours ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="releases">
+                                    <div class="notif-icon releases">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">Rollout completed: Eater iOS 100%</div>
+                                        <div class="notif-meta">Version 5.23.1 • Yesterday</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                                <div class="notification-item" data-category="updates">
+                                    <div class="notif-icon updates">
+                                        <i class="fas fa-calendar"></i>
+                                    </div>
+                                    <div class="notif-content">
+                                        <div class="notif-title">New release scheduled for Jan 12, 2026</div>
+                                        <div class="notif-meta">Release Team • 2 days ago</div>
+                                    </div>
+                                    <button class="notif-close"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                            <div class="notification-dropdown-footer">
+                                <a href="#" class="view-all-link">View all notifications →</a>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn-icon" title="Share"><i class="fas fa-share-alt"></i></button>
                 </div>
             </div>
@@ -57,12 +150,33 @@
         </header>
 
         <main class="container">
-            <!-- Announcements Banner -->
+            <!-- Announcements Banner with Countdown -->
             <section class="announcements-banner">
                 <div class="announcement-card urgent">
                     <i class="fas fa-exclamation-circle"></i>
                     <div class="announcement-content">
                         <strong>Final 2025 Release:</strong> Code freeze December 8, 2025 @ 3pm PST
+                    </div>
+                    <div class="countdown-timer" id="countdownTimer">
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="days">00</span>
+                            <span class="countdown-label">Days</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="hours">00</span>
+                            <span class="countdown-label">Hours</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="minutes">00</span>
+                            <span class="countdown-label">Minutes</span>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span class="countdown-value" id="seconds">00</span>
+                            <span class="countdown-label">Seconds</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -121,6 +235,38 @@
                                 <i class="fas fa-arrow-up"></i> 12 new this week
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Charts Section -->
+            <section class="charts-section">
+                <h2><i class="fas fa-chart-bar"></i> Analytics & Insights</h2>
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Release Success Rate</h3>
+                            <span class="chart-period">Last 6 Months</span>
+                        </div>
+                        <canvas id="successRateChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <h3>Releases by Platform</h3>
+                            <span class="chart-period">Current Quarter</span>
+                        </div>
+                        <canvas id="platformChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="charts-grid-wide">
+                    <div class="chart-card wide">
+                        <div class="chart-header">
+                            <h3>Monthly Release Volume</h3>
+                            <span class="chart-period">2025</span>
+                        </div>
+                        <canvas id="releaseVolumeChart"></canvas>
                     </div>
                 </div>
             </section>
@@ -381,6 +527,193 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <!-- Interactive Release Calendar -->
+            <section class="calendar-section">
+                <h2><i class="fas fa-calendar-alt"></i> Release Calendar</h2>
+                <div class="calendar-controls">
+                    <div class="calendar-legend">
+                        <div class="legend-item">
+                            <span class="legend-dot rider"></span>
+                            <span>Rider</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot driver"></span>
+                            <span>Driver</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-dot eater"></span>
+                            <span>Eater</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="calendar" class="calendar-widget"></div>
+            </section>
+
+            <!-- Mobile App Preview -->
+            <section class="mobile-apps-section">
+                <h2><i class="fas fa-mobile-alt"></i> Our Mobile Apps</h2>
+                <p class="section-intro">The apps we support and release daily to millions of users worldwide</p>
+                
+                <div class="apps-carousel">
+                    <button class="carousel-btn prev" id="carouselPrev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="apps-container" id="appsContainer">
+                        <!-- Rider App -->
+                        <div class="app-preview active">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=300&h=600&fit=crop" alt="Rider App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon rider-icon">
+                                    <i class="fas fa-car"></i>
+                                </div>
+                                <h3>Uber Rider</h3>
+                                <p>Request rides, track drivers, and get to your destination</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.8</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>100M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v4.52.0</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Driver App -->
+                        <div class="app-preview">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726489?w=300&h=600&fit=crop" alt="Driver App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon driver-icon">
+                                    <i class="fas fa-id-card"></i>
+                                </div>
+                                <h3>Uber Driver</h3>
+                                <p>Earn money driving passengers or delivering food</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.7</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>50M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v4.48.2</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Eater App -->
+                        <div class="app-preview">
+                            <div class="device-frame iphone">
+                                <div class="device-screen">
+                                    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=300&h=600&fit=crop" alt="Eater App">
+                                </div>
+                                <div class="device-notch"></div>
+                            </div>
+                            <div class="app-info">
+                                <div class="app-icon eater-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                                <h3>Uber Eats</h3>
+                                <p>Discover restaurants and get food delivered</p>
+                                <div class="app-stats">
+                                    <div class="stat">
+                                        <strong>4.6</strong>
+                                        <span>★ Rating</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>100M+</strong>
+                                        <span>Downloads</span>
+                                    </div>
+                                    <div class="stat">
+                                        <strong>v5.23.1</strong>
+                                        <span>Latest</span>
+                                    </div>
+                                </div>
+                                <div class="app-badges">
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-apple"></i>
+                                        <div>
+                                            <small>Download on the</small>
+                                            <strong>App Store</strong>
+                                        </div>
+                                    </a>
+                                    <a href="#" class="app-badge">
+                                        <i class="fab fa-google-play"></i>
+                                        <div>
+                                            <small>GET IT ON</small>
+                                            <strong>Google Play</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button class="carousel-btn next" id="carouselNext">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="carousel-dots" id="carouselDots">
+                    <button class="dot active" data-index="0"></button>
+                    <button class="dot" data-index="1"></button>
+                    <button class="dot" data-index="2"></button>
                 </div>
             </section>
 
