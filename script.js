@@ -311,20 +311,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // ==================== Docs Dropdown ====================
+    
+    const docsDropdownBtn = document.getElementById('docsDropdownBtn');
+    if (docsDropdownBtn) {
+        docsDropdownBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+        });
+    }
+
     // ==================== Interactive Charts ====================
     
-    // Success Rate Chart (Line)
-    const successRateCtx = document.getElementById('successRateChart');
-    if (successRateCtx) {
-        new Chart(successRateCtx, {
+    // Build Time Chart (Line)
+    const buildTimeCtx = document.getElementById('buildTimeChart');
+    if (buildTimeCtx) {
+        new Chart(buildTimeCtx, {
             type: 'line',
             data: {
-                labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
                 datasets: [{
-                    label: 'Success Rate',
-                    data: [95.2, 96.8, 97.5, 98.1, 98.5, 98.5],
-                    borderColor: '#00B8A9',
-                    backgroundColor: 'rgba(0, 184, 169, 0.1)',
+                    label: 'Build Time (minutes)',
+                    data: [38, 35, 32, 35],
+                    borderColor: '#4D96FF',
+                    backgroundColor: 'rgba(77, 150, 255, 0.1)',
                     tension: 0.4,
                     fill: true,
                     pointRadius: 5,
@@ -341,12 +350,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 scales: {
                     y: {
-                        beginAtZero: false,
-                        min: 94,
-                        max: 100,
+                        beginAtZero: true,
                         ticks: {
                             callback: function(value) {
-                                return value + '%';
+                                return value + 'min';
                             }
                         }
                     }
@@ -355,23 +362,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Platform Distribution Chart (Doughnut)
-    const platformCtx = document.getElementById('platformChart');
-    if (platformCtx) {
-        new Chart(platformCtx, {
-            type: 'doughnut',
+    // Build Size Chart (Bar)
+    const buildSizeCtx = document.getElementById('buildSizeChart');
+    if (buildSizeCtx) {
+        new Chart(buildSizeCtx, {
+            type: 'bar',
             data: {
-                labels: ['iOS Rider', 'Android Rider', 'iOS Driver', 'Android Driver', 'iOS Eater', 'Android Eater'],
+                labels: ['Rider', 'Driver', 'Eater'],
                 datasets: [{
-                    data: [22, 20, 18, 17, 13, 10],
-                    backgroundColor: [
-                        '#00B8A9',
-                        '#00897B',
-                        '#4D96FF',
-                        '#2196F3',
-                        '#FF6B6B',
-                        '#ff8787'
-                    ]
+                    label: 'iOS (MB)',
+                    data: [85, 92, 78],
+                    backgroundColor: '#00B8A9'
+                }, {
+                    label: 'Android (MB)',
+                    data: [72, 80, 68],
+                    backgroundColor: '#4D96FF'
                 }]
             },
             options: {
@@ -381,12 +386,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     legend: {
                         position: 'bottom'
                     }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + 'MB';
+                            }
+                        }
+                    }
                 }
             }
         });
     }
 
-    // Release Volume Chart (Bar)
+    // Remove old release volume chart
     const releaseVolumeCtx = document.getElementById('releaseVolumeChart');
     if (releaseVolumeCtx) {
         new Chart(releaseVolumeCtx, {

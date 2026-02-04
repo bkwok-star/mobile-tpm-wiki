@@ -199,6 +199,27 @@
                         </div>
                     </section>
 
+                    <!-- Charts -->
+                    <section id="charts" class="charts-section compact">
+                        <h2><i class="fas fa-chart-bar"></i> Analytics</h2>
+                        <div class="charts-grid compact">
+                            <div class="chart-card compact">
+                                <div class="chart-header">
+                                    <h3>Success Rate</h3>
+                                    <span class="chart-period">6mo</span>
+                                </div>
+                                <canvas id="successRateChart"></canvas>
+                            </div>
+                            <div class="chart-card compact">
+                                <div class="chart-header">
+                                    <h3>Platform Mix</h3>
+                                    <span class="chart-period">Q4</span>
+                                </div>
+                                <canvas id="platformChart"></canvas>
+                            </div>
+                        </div>
+                    </section>
+
                     <!-- Mission -->
                     <section id="mission" class="mission-section compact">
                         <h2>OUR MISSION</h2>
@@ -219,31 +240,83 @@
                         </div>
                     </section>
 
-                </div>
-
-                <!-- RIGHT COLUMN -->
-                <div class="column-right">
-                    <!-- Analytics Charts -->
-                    <section id="charts" class="charts-section compact">
-                        <h2><i class="fas fa-chart-bar"></i> Build Analytics</h2>
-                        <div class="charts-grid compact">
-                            <div class="chart-card compact">
-                                <div class="chart-header">
-                                    <h3>Build Time</h3>
-                                    <span class="chart-period">Last 30 Days</span>
+                    <!-- Team Grid -->
+                    <section id="team" class="team-section compact">
+                        <h2><i class="fas fa-users"></i> Team</h2>
+                        <div class="team-grid compact">
+                            <div class="team-member compact">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=faces" alt="Evgueni">
+                                <div class="member-info">
+                                    <h4>Evgueni Netchaev</h4>
+                                    <p>Manager II, TPM</p>
+                                    <span><i class="fas fa-map-marker-alt"></i> Seattle</span>
                                 </div>
-                                <canvas id="buildTimeChart"></canvas>
                             </div>
-                            <div class="chart-card compact">
-                                <div class="chart-header">
-                                    <h3>Build Size</h3>
-                                    <span class="chart-period">Trend</span>
+                            <div class="team-member compact">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=60&h=60&fit=crop&crop=faces" alt="Benjamin">
+                                <div class="member-info">
+                                    <h4>Benjamin Kwok</h4>
+                                    <p>Sr TPM</p>
+                                    <span><i class="fas fa-map-marker-alt"></i> San Francisco</span>
                                 </div>
-                                <canvas id="buildSizeChart"></canvas>
+                            </div>
+                            <div class="team-member compact">
+                                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=60&h=60&fit=crop&crop=faces" alt="Dan">
+                                <div class="member-info">
+                                    <h4>Dan Chung</h4>
+                                    <p>Sr TPM</p>
+                                    <span><i class="fas fa-map-marker-alt"></i> San Francisco</span>
+                                </div>
+                            </div>
+                            <div class="team-member compact">
+                                <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=60&h=60&fit=crop&crop=faces" alt="Gurjyot">
+                                <div class="member-info">
+                                    <h4>Gurjyot Nirh</h4>
+                                    <p>Sr TPM</p>
+                                    <span><i class="fas fa-map-marker-alt"></i> Plattsburgh</span>
+                                </div>
                             </div>
                         </div>
                     </section>
 
+                    <!-- Docs Hub -->
+                    <section id="docs" class="docs-section compact">
+                        <h2><i class="fas fa-book"></i> Documentation</h2>
+                        <div class="docs-grid compact">
+                            <a href="#" class="doc-card compact">
+                                <i class="fas fa-rocket"></i>
+                                <div>
+                                    <h4>Release Playbook</h4>
+                                    <p>Step-by-step guide</p>
+                                </div>
+                            </a>
+                            <a href="#" class="doc-card compact">
+                                <i class="fas fa-bug"></i>
+                                <div>
+                                    <h4>Troubleshooting</h4>
+                                    <p>Common issues</p>
+                                </div>
+                            </a>
+                            <a href="#" class="doc-card compact">
+                                <i class="fas fa-code"></i>
+                                <div>
+                                    <h4>API Docs</h4>
+                                    <p>Platform APIs</p>
+                                </div>
+                            </a>
+                            <a href="#" class="doc-card compact">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Onboarding</h4>
+                                    <p>New member guide</p>
+                                </div>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- RIGHT COLUMN -->
+                <div class="column-right">
                     <!-- Calendar with Integrated Milestones -->
                     <section id="calendar" class="calendar-section compact">
                         <h2><i class="fas fa-calendar-alt"></i> Release Calendar & Milestones</h2>
@@ -347,130 +420,35 @@
                         </div>
                     </section>
 
+                    <!-- Contact & Activity -->
+                    <section id="contact" class="contact-section compact">
+                        <h2><i class="fas fa-phone"></i> Contact</h2>
+                        <div class="contact-compact">
+                            <div class="contact-item">
+                                <i class="fab fa-slack"></i>
+                                <div>
+                                    <strong>Slack</strong>
+                                    <a href="#">#mobile-release-dev</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email</strong>
+                                    <a href="#">mobile-tpm-team@uber.com</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone-volume"></i>
+                                <div>
+                                    <strong>Emergency</strong>
+                                    <a href="#">PagerDuty On-Call</a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-
-            <!-- FULL-WIDTH SECTIONS AT BOTTOM -->
-            
-            <!-- Meet the Team - Full Width -->
-            <section id="team" class="team-section-full">
-                <h2><i class="fas fa-users"></i> Meet the Team</h2>
-                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=200&fit=crop" alt="Team" class="section-hero-image">
-                <div class="team-grid-horizontal">
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces" alt="Evgueni">
-                        <div class="member-info">
-                            <h4>Evgueni Netchaev</h4>
-                            <p>Manager II, Technical Program Manager</p>
-                            <span><i class="fas fa-map-marker-alt"></i> Seattle, WA</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=faces" alt="Benjamin">
-                        <div class="member-info">
-                            <h4>Benjamin Kwok</h4>
-                            <p>Sr Technical Program Manager</p>
-                            <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=faces" alt="Dan">
-                        <div class="member-info">
-                            <h4>Dan Chung</h4>
-                            <p>Sr Technical Program Manager</p>
-                            <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=80&h=80&fit=crop&crop=faces" alt="Gurjyot">
-                        <div class="member-info">
-                            <h4>Gurjyot Nirh</h4>
-                            <p>Sr Technical Program Manager</p>
-                            <span><i class="fas fa-map-marker-alt"></i> Plattsburgh, NY</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=faces" alt="Jareth">
-                        <div class="member-info">
-                            <h4>Jareth Pham</h4>
-                            <p>Sr TPM, Release</p>
-                            <span><i class="fas fa-map-marker-alt"></i> San Francisco, CA</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=faces" alt="Anugna">
-                        <div class="member-info">
-                            <h4>Anugna S Gowda</h4>
-                            <p>OS Operator III</p>
-                            <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=faces" alt="Toniya">
-                        <div class="member-info">
-                            <h4>Toniya Kuppuswamy</h4>
-                            <p>Operator II (R/D)</p>
-                            <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
-                        </div>
-                    </div>
-                    <div class="team-member-horizontal">
-                        <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=80&h=80&fit=crop&crop=faces" alt="Narmada">
-                        <div class="member-info">
-                            <h4>Narmada V</h4>
-                            <p>Operator II (E/P)</p>
-                            <span><i class="fas fa-map-marker-alt"></i> Bangalore, India</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Us - Full Width -->
-            <section id="contact" class="contact-section-full">
-                <h2><i class="fas fa-phone"></i> Contact Us</h2>
-                <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?w=1200&h=150&fit=crop" alt="Contact" class="section-hero-image">
-                <div class="contact-grid-horizontal">
-                    <div class="contact-card-horizontal">
-                        <div class="contact-icon slack">
-                            <i class="fab fa-slack"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Slack Channels</h4>
-                            <a href="#">#mobile-release-dev</a>
-                            <a href="#">#mobile-release-platform</a>
-                            <a href="#">#mobile-release-questions</a>
-                        </div>
-                    </div>
-                    <div class="contact-card-horizontal">
-                        <div class="contact-icon email">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Email Team</h4>
-                            <a href="mailto:mobile-tpm-team-group@uber.com">mobile-tpm-team-group@uber.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-card-horizontal">
-                        <div class="contact-icon emergency">
-                            <i class="fas fa-phone-volume"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Emergency On-Call</h4>
-                            <a href="#">PagerDuty Schedule</a>
-                            <p>For L5 level emergencies only</p>
-                        </div>
-                    </div>
-                    <div class="contact-card-horizontal">
-                        <div class="contact-icon jira">
-                            <i class="fas fa-ticket-alt"></i>
-                        </div>
-                        <div class="contact-info">
-                            <h4>Submit Request</h4>
-                            <a href="#">Create Jira Ticket</a>
-                            <p>For all other requests</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
         </main>
     </div>
 
