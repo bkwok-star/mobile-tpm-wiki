@@ -1572,11 +1572,18 @@ body {
     font-weight: 600;
 }
 
-.chart-placeholder {
+.chart-placeholder,
+.chart-placeholder-box {
     width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.chart-placeholder-box svg {
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Calendar Section */
@@ -2238,7 +2245,7 @@ body {
     font-size: 0.65em;
 }
 
-/* Compact Metrics */
+/* Compact Metrics with Enhanced 3D Effect */
 .metrics-dashboard.compact {
     margin-bottom: 0;
 }
@@ -2250,11 +2257,18 @@ body {
 
 .metric-card.compact {
     padding: 15px;
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.05);
 }
 
 .metric-card.clickable {
     cursor: pointer !important;
-    transition: var(--transition);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
 }
 
@@ -2273,6 +2287,7 @@ body {
     transition: var(--transition);
     pointer-events: none;
     white-space: nowrap;
+    box-shadow: 0 4px 8px rgba(0, 184, 169, 0.3);
 }
 
 .metric-card.clickable:hover::after {
@@ -2281,9 +2296,21 @@ body {
 }
 
 .metric-card.clickable:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 20px rgba(0, 184, 169, 0.2);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 
+        0 16px 32px rgba(0, 0, 0, 0.15),
+        0 8px 16px rgba(0, 0, 0, 0.1),
+        inset 0 2px 0 rgba(255, 255, 255, 1),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.08);
     border: 2px solid var(--secondary);
+    background: linear-gradient(145deg, #ffffff 0%, #f0f9f8 100%);
+}
+
+.metric-card.clickable:active {
+    transform: translateY(-2px) scale(0.98);
+    box-shadow: 
+        0 4px 8px rgba(0, 0, 0, 0.12),
+        inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .metric-icon {

@@ -821,18 +821,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ==================== Metric Cards Animation ====================
+    // ==================== Metric Cards Animation (removed - using modal click handler) ====================
     
-    const metricCards = document.querySelectorAll('.metric-card');
-    metricCards.forEach(card => {
-        card.addEventListener('click', function() {
-            this.style.transform = 'scale(0.98)';
-            setTimeout(() => {
-                this.style.transform = 'translateY(-5px)';
-            }, 100);
-        });
-    });
-
     // ==================== Timeline Progress Animation ====================
     
     const progressBars = document.querySelectorAll('.progress-fill');
