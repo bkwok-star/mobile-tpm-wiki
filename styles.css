@@ -1676,6 +1676,40 @@ body {
     padding: 2px 5px;
 }
 
+/* Hide calendar view switcher tabs */
+.fc .fc-toolbar.fc-header-toolbar {
+    margin-bottom: 15px;
+}
+
+.fc .fc-toolbar-chunk:last-child {
+    display: none;
+}
+
+/* Add visual indicators to clickable metric cards */
+.metric-card.clickable::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: var(--secondary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 12px;
+    opacity: 0;
+    transition: var(--transition);
+    box-shadow: 0 2px 8px rgba(0, 184, 169, 0.4);
+}
+
+.metric-card.clickable:hover::before {
+    opacity: 1;
+    animation: pulse 1.5s infinite;
+}
+
 /* Mobile Apps Section */
 .mobile-apps-section {
     margin-bottom: 50px;
@@ -2464,121 +2498,121 @@ body {
     color: var(--gray-600);
 }
 
-/* Compact Calendar Section */
-.calendar-section.compact {
+/* Expanded Timeline/Milestones Section */
+.milestones-section-expanded.compact {
     margin-bottom: 0;
 }
 
-/* Compact Milestones Timeline */
-.milestones-compact {
-    background: var(--white);
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-}
-
-.milestone-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 8px 0;
-    border-left: 2px solid var(--gray-300);
+.timeline-expanded {
     position: relative;
-    margin-left: 8px;
+    padding-left: 50px;
 }
 
-.milestone-marker {
+.timeline-expanded::before {
+    content: '';
     position: absolute;
-    left: -9px;
-    width: 14px;
-    height: 14px;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, var(--success) 0%, var(--warning) 50%, var(--gray-300) 100%);
+    border-radius: 2px;
+}
+
+.timeline-item-expanded {
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.timeline-marker-expanded {
+    position: absolute;
+    left: -44px;
+    top: 5px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
     background: var(--gray-400);
-    border: 3px solid var(--white);
+    border: 4px solid var(--white);
+    box-shadow: 0 0 0 4px var(--gray-300);
+    z-index: 1;
 }
 
-.milestone-item.completed .milestone-marker {
+.timeline-item-expanded.completed .timeline-marker-expanded {
     background: var(--success);
+    box-shadow: 0 0 0 4px rgba(107, 203, 119, 0.3);
 }
 
-.milestone-item.active .milestone-marker {
+.timeline-item-expanded.active .timeline-marker-expanded {
     background: var(--warning);
+    box-shadow: 0 0 0 4px rgba(255, 217, 61, 0.3);
     animation: pulse 2s infinite;
 }
 
-.milestone-content {
-    flex: 1;
-    font-size: 0.85em;
-    padding-left: 5px;
+.timeline-item-expanded.upcoming .timeline-marker-expanded {
+    background: var(--info);
+    box-shadow: 0 0 0 4px rgba(77, 150, 255, 0.2);
 }
 
-.milestone-content strong {
+.timeline-content-expanded {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+}
+
+.timeline-content-expanded:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.timeline-date-expanded {
+    color: var(--secondary);
+    font-weight: 700;
+    font-size: 0.85em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timeline-content-expanded h4 {
+    font-size: 1.2em;
     color: var(--dark);
-    margin-right: 5px;
+    margin-bottom: 8px;
 }
 
-.badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 10px;
-    font-size: 0.85em;
-    font-weight: 600;
-    margin-left: 8px;
+.timeline-content-expanded p {
+    color: var(--gray-600);
+    font-size: 0.9em;
+    margin-bottom: 12px;
+    line-height: 1.6;
 }
 
-.badge.success {
-    background: rgba(107, 203, 119, 0.2);
-    color: var(--success);
-}
-
-.badge.warning {
-    background: rgba(255, 217, 61, 0.2);
-    color: #d4a017;
-}
-
-.badge.info {
-    background: rgba(77, 150, 255, 0.2);
-    color: var(--info);
-}
-
-.mini-progress {
-    height: 4px;
+.progress-bar-expanded {
+    width: 100%;
+    height: 10px;
     background: var(--gray-200);
-    border-radius: 2px;
-    margin-top: 5px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 12px;
 }
 
-.mini-progress-fill {
+.progress-fill-expanded {
     height: 100%;
     background: linear-gradient(90deg, var(--warning) 0%, var(--secondary) 100%);
-    border-radius: 2px;
     transition: width 0.5s ease;
+    border-radius: 5px;
 }
 
-.calendar-legend {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 10px;
-    font-size: 0.85em;
+.progress-label {
+    font-size: 0.8em;
+    color: var(--gray-600);
+    margin-top: 6px;
+    font-weight: 600;
 }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.legend-item .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 3px;
-}
-
-.calendar-widget.compact {
-    padding: 15px;
-    font-size: 0.85em;
-}
+/* Calendar Section - Remove */
 
 /* Compact Mobile Apps */
 .mobile-apps-section.compact {
@@ -2586,28 +2620,50 @@ body {
 }
 
 .apps-carousel.compact {
-    height: 280px;
+    height: 300px;
     position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    background: var(--white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.apps-container {
+    display: flex;
+    overflow: hidden;
+    border-radius: 12px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
 }
 
 .app-preview.compact {
-    padding: 20px;
-    gap: 20px;
-    min-height: 280px;
+    min-width: 100%;
+    width: 100%;
+    flex-shrink: 0;
+    padding: 25px;
+    gap: 25px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .device-frame.compact {
-    width: 140px;
-    height: 280px;
+    width: 150px;
+    height: 300px;
     border-radius: 25px;
-    padding: 6px;
+    padding: 8px;
+    background: #1a1a1a;
+    border: 8px solid #1a1a1a;
+    flex-shrink: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .device-frame.compact img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
+    border-radius: 18px;
 }
 
 .app-info.compact h3 {

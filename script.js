@@ -472,66 +472,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ==================== Interactive Calendar ====================
-    
-    const calendarEl = document.getElementById('calendar');
-    if (calendarEl) {
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            headerToolbar: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek'
-            },
-            events: [
-                {
-                    title: 'Rider iOS 4.52.0',
-                    start: '2025-12-08',
-                    color: '#00B8A9'
-                },
-                {
-                    title: 'Driver Android 4.48.2',
-                    start: '2025-12-10',
-                    color: '#4D96FF'
-                },
-                {
-                    title: 'Eater iOS 5.23.1',
-                    start: '2025-12-12',
-                    color: '#FF6B6B'
-                },
-                {
-                    title: 'Rider Android 4.51.5',
-                    start: '2025-12-15',
-                    color: '#00897B'
-                },
-                {
-                    title: 'Final 2025 Rollout',
-                    start: '2025-12-18',
-                    end: '2025-12-19',
-                    color: '#FFD93D'
-                },
-                {
-                    title: '2026 Releases Resume',
-                    start: '2026-01-05',
-                    color: '#6BCB77'
-                },
-                {
-                    title: 'Rider iOS 5.0.0',
-                    start: '2026-01-12',
-                    color: '#00B8A9'
-                },
-                {
-                    title: 'Driver iOS 5.0.0',
-                    start: '2026-01-15',
-                    color: '#4D96FF'
-                }
-            ],
-            eventClick: function(info) {
-                showNotification(`📅 ${info.event.title} - ${info.event.start.toLocaleDateString()}`);
-            }
-        });
-        calendar.render();
-    }
+    // ==================== Calendar removed - using timeline instead ====================
 
     // ==================== Mobile App Carousel ====================
     
