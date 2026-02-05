@@ -21,9 +21,9 @@
             <a href="#countdown" class="nav-item"><i class="fas fa-clock"></i> 2. Countdown</a>
             <a href="#dashboard" class="nav-item"><i class="fas fa-chart-line"></i> 3. Metrics</a>
             <a href="#mission" class="nav-item"><i class="fas fa-bullseye"></i> 4. Mission</a>
-            <a href="#calendar" class="nav-item"><i class="fas fa-calendar-alt"></i> 5. Calendar</a>
-            <a href="#charts" class="nav-item"><i class="fas fa-chart-bar"></i> 6. Analytics</a>
-            <a href="#apps" class="nav-item"><i class="fas fa-mobile-alt"></i> 7. Apps</a>
+            <a href="#activity" class="nav-item"><i class="fas fa-stream"></i> 5. Activity</a>
+            <a href="#calendar" class="nav-item"><i class="fas fa-calendar-alt"></i> 6. Timeline</a>
+            <a href="#charts" class="nav-item"><i class="fas fa-chart-bar"></i> 7. Analytics</a>
             <a href="#team" class="nav-item"><i class="fas fa-users"></i> 8. Team</a>
             <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> 9. Contact</a>
         </nav>
@@ -219,6 +219,77 @@
                         </div>
                     </section>
 
+                    <!-- Activity Stream -->
+                    <section id="activity" class="activity-stream-section compact">
+                        <h2><i class="fas fa-stream"></i> Recent Activity</h2>
+                        <div class="activity-stream">
+                            <div class="activity-stream-item">
+                                <div class="activity-stream-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="activity-stream-content">
+                                    <div class="activity-stream-title">Rider iOS 4.52.0 deployed</div>
+                                    <div class="activity-stream-meta">
+                                        <span><i class="fas fa-user"></i> Benjamin K.</span>
+                                        <span><i class="fas fa-clock"></i> 12 min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-stream-item">
+                                <div class="activity-stream-icon info">
+                                    <i class="fas fa-code-branch"></i>
+                                </div>
+                                <div class="activity-stream-content">
+                                    <div class="activity-stream-title">PR #2847 merged to main</div>
+                                    <div class="activity-stream-meta">
+                                        <span><i class="fas fa-user"></i> Dan C.</span>
+                                        <span><i class="fas fa-clock"></i> 28 min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-stream-item">
+                                <div class="activity-stream-icon warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <div class="activity-stream-content">
+                                    <div class="activity-stream-title">Build warning on Driver Android</div>
+                                    <div class="activity-stream-meta">
+                                        <span><i class="fas fa-robot"></i> CI/CD Bot</span>
+                                        <span><i class="fas fa-clock"></i> 1 hour ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-stream-item">
+                                <div class="activity-stream-icon success">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <div class="activity-stream-content">
+                                    <div class="activity-stream-title">All tests passed (2,847 tests)</div>
+                                    <div class="activity-stream-meta">
+                                        <span><i class="fas fa-robot"></i> Test Runner</span>
+                                        <span><i class="fas fa-clock"></i> 2 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="activity-stream-item">
+                                <div class="activity-stream-icon primary">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="activity-stream-content">
+                                    <div class="activity-stream-title">Team sync meeting notes posted</div>
+                                    <div class="activity-stream-meta">
+                                        <span><i class="fas fa-user"></i> Evgueni N.</span>
+                                        <span><i class="fas fa-clock"></i> 3 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                 </div>
 
                 <!-- RIGHT COLUMN -->
@@ -390,66 +461,14 @@
                         </div>
                     </section>
 
-                    <!-- Mobile Apps Carousel -->
-                    <section id="apps" class="mobile-apps-section compact">
-                        <h2><i class="fas fa-mobile-alt"></i> Our Apps</h2>
-                        <div class="apps-carousel compact">
-                            <div class="apps-container" id="appsContainer">
-                                <div class="app-preview compact active">
-                                    <div class="device-frame compact">
-                                        <img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=200&h=400&fit=crop" alt="Rider">
-                                    </div>
-                                    <div class="app-info compact">
-                                        <div class="app-icon rider-icon"><i class="fas fa-car"></i></div>
-                                        <h3>Uber Rider</h3>
-                                        <p>Request rides anywhere</p>
-                                        <div class="app-stats compact">
-                                            <span><strong>4.8★</strong></span>
-                                            <span><strong>100M+</strong></span>
-                                            <span>v4.52.0</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="app-preview compact">
-                                    <div class="device-frame compact">
-                                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726489?w=200&h=400&fit=crop" alt="Driver">
-                                    </div>
-                                    <div class="app-info compact">
-                                        <div class="app-icon driver-icon"><i class="fas fa-id-card"></i></div>
-                                        <h3>Uber Driver</h3>
-                                        <p>Earn driving or delivering</p>
-                                        <div class="app-stats compact">
-                                            <span><strong>4.7★</strong></span>
-                                            <span><strong>50M+</strong></span>
-                                            <span>v4.48.2</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="app-preview compact">
-                                    <div class="device-frame compact">
-                                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=200&h=400&fit=crop" alt="Eater">
-                                    </div>
-                                    <div class="app-info compact">
-                                        <div class="app-icon eater-icon"><i class="fas fa-utensils"></i></div>
-                                        <h3>Uber Eats</h3>
-                                        <p>Food delivery at your door</p>
-                                        <div class="app-stats compact">
-                                            <span><strong>4.6★</strong></span>
-                                            <span><strong>100M+</strong></span>
-                                            <span>v5.23.1</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="carousel-btn prev compact" id="carouselPrev"><i class="fas fa-chevron-left"></i></button>
-                            <button class="carousel-btn next compact" id="carouselNext"><i class="fas fa-chevron-right"></i></button>
-                        </div>
-                        <div class="carousel-dots">
-                            <button class="dot active" data-index="0"></button>
-                            <button class="dot" data-index="1"></button>
-                            <button class="dot" data-index="2"></button>
-                        </div>
-                    </section>
+                    <!-- Mobile Apps Carousel - REMOVED -->
+                    <!-- 
+                    NOTE: The carousel feature has been temporarily removed due to unresolved
+                    sliding/navigation issues. Multiple attempts to fix the carousel behavior
+                    (click handlers, transform animations, overflow settings) did not resolve
+                    the problem. This section may be reimplemented in the future with a 
+                    different carousel library or approach.
+                    -->
 
                 </div>
             </div>
