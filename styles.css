@@ -2150,6 +2150,8 @@ body {
 /* Compact Quick Links */
 .quick-links-section.compact {
     margin-bottom: 20px;
+    position: relative;
+    z-index: 2000;
 }
 
 .quick-links-grid.compact {
@@ -2207,7 +2209,7 @@ body {
 /* Docs Dropdown */
 .quick-link-dropdown {
     position: relative;
-    z-index: 2000;
+    z-index: 2001;
 }
 
 .quick-dropdown-menu {
@@ -2222,7 +2224,7 @@ body {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 2001;
+    z-index: 2002;
 }
 
 .quick-link-dropdown:hover .quick-dropdown-menu {
@@ -2262,7 +2264,7 @@ body {
 .announcements-banner.compact {
     margin-bottom: 20px;
     position: relative;
-    z-index: 50;
+    z-index: 10;
 }
 
 .announcement-card.compact {
@@ -3071,7 +3073,7 @@ body {
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    max-height: 350px;
+    max-height: 600px;
     overflow-y: auto;
 }
 
