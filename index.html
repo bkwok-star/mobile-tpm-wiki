@@ -22,10 +22,11 @@
             <a href="#dashboard" class="nav-item"><i class="fas fa-chart-line"></i> 3. Metrics</a>
             <a href="#mission" class="nav-item"><i class="fas fa-bullseye"></i> 4. Mission</a>
             <a href="#activity" class="nav-item"><i class="fas fa-stream"></i> 5. Activity</a>
-            <a href="#calendar" class="nav-item"><i class="fas fa-calendar-alt"></i> 6. Timeline</a>
-            <a href="#charts" class="nav-item"><i class="fas fa-chart-bar"></i> 7. Analytics</a>
-            <a href="#team" class="nav-item"><i class="fas fa-users"></i> 8. Team</a>
-            <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> 9. Contact</a>
+            <a href="#assistant" class="nav-item"><i class="fas fa-robot"></i> 6. Assistant</a>
+            <a href="#calendar" class="nav-item"><i class="fas fa-calendar-alt"></i> 7. Timeline</a>
+            <a href="#charts" class="nav-item"><i class="fas fa-chart-bar"></i> 8. Analytics</a>
+            <a href="#team" class="nav-item"><i class="fas fa-users"></i> 9. Team</a>
+            <a href="#contact" class="nav-item"><i class="fas fa-phone"></i> 10. Contact</a>
         </nav>
         <div class="sidebar-footer">
             <button class="theme-toggle" id="themeToggle">
@@ -364,6 +365,36 @@
                                         <span><i class="fas fa-clock"></i> Yesterday</span>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- TPM Assistant Bot -->
+                    <section id="assistant" class="assistant-bot-section compact">
+                        <h2><i class="fas fa-robot"></i> TPM Assistant</h2>
+                        <div class="assistant-bot-widget">
+                            <div class="assistant-suggestions">
+                                <div class="suggestion-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>When is the next release?</span>
+                                </div>
+                                <div class="suggestion-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Check build status</span>
+                                </div>
+                                <div class="suggestion-item">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>View deployment schedule</span>
+                                </div>
+                            </div>
+                            <div class="assistant-input-wrapper">
+                                <input type="text" class="assistant-input" placeholder="Ask me anything about releases...">
+                                <button class="assistant-send-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                            <div class="assistant-powered-by">
+                                <i class="fas fa-bolt"></i> Powered by AI
                             </div>
                         </div>
                     </section>

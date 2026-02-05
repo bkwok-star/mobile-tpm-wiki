@@ -3177,6 +3177,114 @@ body {
     opacity: 0.7;
 }
 
+/* TPM Assistant Bot Section */
+.assistant-bot-section.compact {
+    margin-bottom: 0;
+    margin-top: 20px;
+}
+
+.assistant-bot-widget {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.assistant-suggestions {
+    margin-bottom: 15px;
+}
+
+.suggestion-item {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    color: white;
+    font-size: 0.85em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.suggestion-item:last-child {
+    margin-bottom: 0;
+}
+
+.suggestion-item:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateX(3px);
+}
+
+.suggestion-item i {
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+.assistant-input-wrapper {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.assistant-input {
+    flex: 1;
+    padding: 10px 12px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    font-size: 0.85em;
+    outline: none;
+    transition: var(--transition);
+}
+
+.assistant-input:focus {
+    border-color: rgba(255, 255, 255, 0.8);
+    background: white;
+}
+
+.assistant-input::placeholder {
+    color: var(--gray-500);
+}
+
+.assistant-send-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #667eea;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+}
+
+.assistant-send-btn:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+.assistant-powered-by {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.assistant-powered-by i {
+    color: var(--warning);
+    animation: pulse 2s infinite;
+}
+
 /* Responsive Compact Mode */
 @media (max-width: 1400px) {
     .two-column-layout {

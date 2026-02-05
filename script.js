@@ -936,6 +936,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }, index * 100);
     });
 
+    // ==================== TPM Assistant Bot ====================
+    
+    const assistantInput = document.querySelector('.assistant-input');
+    const assistantSendBtn = document.querySelector('.assistant-send-btn');
+    const suggestionItems = document.querySelectorAll('.suggestion-item');
+
+    // Handle suggestion clicks
+    suggestionItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const question = this.querySelector('span').textContent;
+            if (assistantInput) {
+                assistantInput.value = question;
+                assistantInput.focus();
+            }
+        });
+    });
+
+    // Handle send button
+    if (assistantSendBtn && assistantInput) {
+        assistantSendBtn.addEventListener('click', function() {
+            const query = assistantInput.value.trim();
+            if (query) {
+                showNotification('🤖 TPM Assistant: Analyzing your question...');
+                assistantInput.value = '';
+                
+                // Simulate response
+                setTimeout(() => {
+                    showNotification('💡 Check the Timeline section for upcoming releases!');
+                }, 1500);
+            }
+        });
+
+        // Enter key to send
+        assistantInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                assistantSendBtn.click();
+            }
+        });
+    }
+
     // ==================== Welcome Message ====================
     
     setTimeout(() => {
