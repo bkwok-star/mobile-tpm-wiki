@@ -2118,7 +2118,7 @@ body {
 /* Two Column Layout */
 .two-column-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
     gap: 25px;
 }
 
@@ -2207,6 +2207,7 @@ body {
 /* Docs Dropdown */
 .quick-link-dropdown {
     position: relative;
+    z-index: 2000;
 }
 
 .quick-dropdown-menu {
@@ -2221,7 +2222,7 @@ body {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 1500;
+    z-index: 2001;
 }
 
 .quick-link-dropdown:hover .quick-dropdown-menu {
@@ -2260,6 +2261,8 @@ body {
 /* Compact Announcement Banner */
 .announcements-banner.compact {
     margin-bottom: 20px;
+    position: relative;
+    z-index: 50;
 }
 
 .announcement-card.compact {
@@ -2505,110 +2508,110 @@ body {
 
 .timeline-expanded {
     position: relative;
-    padding-left: 50px;
+    padding-left: 40px;
 }
 
 .timeline-expanded::before {
     content: '';
     position: absolute;
-    left: 15px;
+    left: 12px;
     top: 0;
     bottom: 0;
-    width: 4px;
+    width: 3px;
     background: linear-gradient(180deg, var(--success) 0%, var(--warning) 50%, var(--gray-300) 100%);
     border-radius: 2px;
 }
 
 .timeline-item-expanded {
     position: relative;
-    margin-bottom: 30px;
-    padding-bottom: 20px;
+    margin-bottom: 18px;
+    padding-bottom: 0;
 }
 
 .timeline-marker-expanded {
     position: absolute;
-    left: -44px;
-    top: 5px;
-    width: 24px;
-    height: 24px;
+    left: -37px;
+    top: 3px;
+    width: 18px;
+    height: 18px;
     border-radius: 50%;
     background: var(--gray-400);
-    border: 4px solid var(--white);
-    box-shadow: 0 0 0 4px var(--gray-300);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--gray-300);
     z-index: 1;
 }
 
 .timeline-item-expanded.completed .timeline-marker-expanded {
     background: var(--success);
-    box-shadow: 0 0 0 4px rgba(107, 203, 119, 0.3);
+    box-shadow: 0 0 0 3px rgba(107, 203, 119, 0.3);
 }
 
 .timeline-item-expanded.active .timeline-marker-expanded {
     background: var(--warning);
-    box-shadow: 0 0 0 4px rgba(255, 217, 61, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 217, 61, 0.3);
     animation: pulse 2s infinite;
 }
 
 .timeline-item-expanded.upcoming .timeline-marker-expanded {
     background: var(--info);
-    box-shadow: 0 0 0 4px rgba(77, 150, 255, 0.2);
+    box-shadow: 0 0 0 3px rgba(77, 150, 255, 0.2);
 }
 
 .timeline-content-expanded {
     background: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 12px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     transition: var(--transition);
 }
 
 .timeline-content-expanded:hover {
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+    transform: translateX(3px);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
 }
 
 .timeline-date-expanded {
     color: var(--secondary);
     font-weight: 700;
-    font-size: 0.85em;
-    margin-bottom: 8px;
+    font-size: 0.7em;
+    margin-bottom: 4px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
 .timeline-content-expanded h4 {
-    font-size: 1.2em;
+    font-size: 1em;
     color: var(--dark);
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 .timeline-content-expanded p {
     color: var(--gray-600);
-    font-size: 0.9em;
-    margin-bottom: 12px;
-    line-height: 1.6;
+    font-size: 0.8em;
+    margin-bottom: 8px;
+    line-height: 1.4;
 }
 
 .progress-bar-expanded {
     width: 100%;
-    height: 10px;
+    height: 6px;
     background: var(--gray-200);
-    border-radius: 5px;
+    border-radius: 3px;
     overflow: hidden;
-    margin-top: 12px;
+    margin-top: 8px;
 }
 
 .progress-fill-expanded {
     height: 100%;
     background: linear-gradient(90deg, var(--warning) 0%, var(--secondary) 100%);
     transition: width 0.5s ease;
-    border-radius: 5px;
+    border-radius: 3px;
 }
 
 .progress-label {
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: var(--gray-600);
-    margin-top: 6px;
+    margin-top: 4px;
     font-weight: 600;
 }
 
@@ -3068,7 +3071,7 @@ body {
     border-radius: 12px;
     padding: 15px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-    max-height: 400px;
+    max-height: 350px;
     overflow-y: auto;
 }
 
